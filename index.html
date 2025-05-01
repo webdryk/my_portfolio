@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./asserts/css/style.css" />
+  
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet"/>
+
+    <title>Webdryk 🤓</title>
+  </head>
+  <body>
+    <!-- header -->
+    <header>
+      <nav class="navbar">
+        <div class="nav-header">
+            <div class="logo">
+              <h2>Amebley Success</h2>
+            </div>
+            <div class="hamburger" onclick="toggleMenu()">
+              &#9776;
+            </div>
+        </div>
+        
+        <ul class="nav_menu"id="navMenu">
+          <li class="nav_Item"><a href="#about" class="nav_link">About</a></li>
+          <li class="nav_Item"><a href="#experience" class="nav_link">Experience</a></li>
+          <li class="nav_Item"><a href="#project" class="nav_link">Projects</a></li>
+          <li class="nav_Item"><a href="#contact_header" class="nav_link">Contact</a></li>
+        </ul>
+      </nav>
+    </header>
+    <!-- main -->
+    <div class="container">
+      <div class="profile_pic">
+        <!-- image here -->
+        <img
+          id="profile1"
+          src="./asserts/img/profile.jpg"
+          alt="profile picture"
+          srcset=""
+        />
+      </div>
+      <div class="intro">
+        <h4>Hello, I'm</h4>
+        <h1>Amebley Success</h1>
+        <div class="button">
+          <a href="http://">Download cv</a>
+          <a href="#contact_header">Contact info </a>
+        </div>
+        <div class="socials">
+          <a href="https://github.com/webdryk"><i class="fa-brands fa-github"></i></a>
+          <a href="http://www.linkedin.com/in/amebley-success"><i class="fa-brands fa-linkedin"></i></a>
+        </div>
+      </div>
+    </div>
+
+    <!-- about -->
+
+    <div class="about_header" id="about">
+      <h3>Get To Know More</h3>
+      <h1>About Me</h1>
+    </div>
+    <div class="about">
+      <div class="profile_image">
+        <img
+          id="profile2"
+          src="./asserts/img/profile.jpg"
+          alt="profile picture"
+          srcset=""
+          style="width: 400px; height: 400px"
+        />
+      </div>
+
+      <div class="bio">
+        <div class="experience" id="card">
+          <span><i class="fa-solid fa-award"></i></span>
+          <h3>Experience</h3>
+          <h4>2+ years</h4>
+          <h4>Full stack Development</h4>
+        </div>
+        <div class="education" id="card">
+          <span><i class="fa-solid fa-users"></i></span>
+          <h3>Education</h3>
+          <h4>B.Sc. Computer Science</h4>
+          <h4>HND. Computer Science</h4>
+        </div>
+        <div class="info">
+          <p>
+            I am a passionate and versatile full-stack developer with a strong
+            background in backend Development and a focus on building secure,
+            user-centered web applications. My skills span across Node.js,
+            Express, MongoDB, React.js, and EJS, with practical experience in
+            authentication systems, admin dashboards, and responsive UI/UX
+            design.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <div class="experience_header" id="experience">
+      <h3>Explore My</h3>
+      <h1>Experience</h1>
+    </div>
+
+    <div class="experience_main">
+        
+      <div class="frontend_card">
+        <h1 id="stack_header">Frontend Development</h1>
+        <div class="frontend">
+          <div class="item">
+            <p>
+              <span><i class="fa-solid fa-circle-check"></i></span> HTML<br />
+              <span >Experienced</span>
+            </p>
+          </div>
+          <div class="item">
+            <p>
+                <span><i class="fa-solid fa-circle-check"></i></span> CSS<br />
+              <span>Experienced</span>
+            </p>
+          </div>
+          <div class="item">
+            <p>
+                <span><i class="fa-solid fa-circle-check"></i></span> SASS<br />
+              <span>Experienced</span>
+            </p>
+          </div>
+          <div class="item">
+            <p>
+                <span><i class="fa-solid fa-circle-check"></i></span> JavaScript<br />
+              <span>Experienced</span>
+            </p>
+          </div>
+          <div class="item">
+            <p>
+                <span><i class="fa-solid fa-circle-check"></i></span> TypScript<br />
+              <span>Experienced</span>
+            </p>
+          </div>
+          <div class="item">
+            <p>
+                <span><i class="fa-solid fa-circle-check"></i></span> React Js<br />
+              <span>Experienced</span>
+            </p>
+          </div>
+        </div>
+    </div>
+        <div class="frontend_card">
+          <h1 id="stack_header">Backend Development</h1>
+          <div class="frontend">
+            <div class="item">
+              <p>
+                <span><i class="fa-solid fa-circle-check"></i></span>  Node Js<br />
+                <span>Experienced</span>
+              </p>
+            </div>
+            <div class="item">
+              <p>
+                <span><i class="fa-solid fa-circle-check"></i></span>  Express Js<br />
+                <span>Experienced</span>
+              </p>
+            </div>
+            <div class="item">
+              <p>
+                <span><i class="fa-solid fa-circle-check"></i></span> MongoDB<br />
+                <span>Experienced</span>
+              </p>
+            </div>
+            <div class="item">
+              <p>
+                <span><i class="fa-solid fa-circle-check"></i></span>  Git<br />
+                <span>Experienced</span>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- projects -->
+     <div class="project_header" id="project">
+        <h3>Browse My Recent</h3>
+      <h1>Projects</h1>
+     </div>
+<div class="project_container">
+    <div class="project1">
+        <img
+          id="project_img"
+          src="./asserts/img/urlShortner.png"
+          alt="profile picture"
+          srcset=""
+          
+        />
+        <h3>URL Shortner</h3>
+        <div class="button">
+            <a href="https://github.com/webdryk/urlshortner">Github</a>
+            <a href="https://urlshortner-ejk74zvhd-webdryks-projects.vercel.app/">Live Demo</a>
+          </div>
+     </div>
+     <div class="project1">
+        <img
+          id="project_img"
+          src="./asserts/img/profile.jpg"
+          alt="profile picture"
+          srcset=""
+          
+        />
+        <h3>Project Two</h3>
+        <div class="button">
+            <a href="http://">Github</a>
+            <a href="http://">Live Demo</a>
+          </div>
+     </div>
+     <div class="project1">
+        <img
+          id="project_img"
+          src="./asserts/img/profile.jpg"
+          alt="profile picture"
+          srcset=""
+          
+        />
+        <h3>Project Three</h3>
+        <div class="button">
+            <a href="http://">Github</a>
+            <a href="http://">Live Demo</a>
+          </div>
+     </div>
+</div>
+     
+<!-- contact -->
+<div class="contact_header" id="contact_header">
+    <h3>Get in Touch</h3>
+  <h1>Contact Me</h1>
+ </div>
+ <div class="contact_container">
+    <div class="contact">
+        <div class="email">
+            <i class="fa-solid fa-square-envelope"></i> <a href="mailto:saamebley@gmail.com">saamebley@gmail.com</a>
+        </div>
+        <div class="linkedin">
+            <i class="fa-brands fa-linkedin"></i> <a href="http://www.linkedin.com/in/amebley-success">Webdryk</a>
+        </div>
+ </div>
+ 
+ </div>
+
+ <ul class="footer">
+    <li class="footer_Item"><a href="#about" class="footer_link">About</a></li>
+    <li class="footer_Item"><a href="#experience" class="footer_link">Experience</a></li>
+    <li class="footer_Item"><a href="#project" class="footer_link">Projects</a></li>
+    <li class="footer_Item"><a href="#contact" class="footer_link">Contact</a></li>
+  </ul>
+
+  <div class="copyright">
+    <p>Copyright © 2025 John Doe. All Rights Reserved.</p>
+  </div>
+
+  <script>
+    function toggleMenu() {
+      const navMenu = document.getElementById("navMenu");
+      navMenu.classList.toggle("show");
+    }
+  </script>
+  </body>
+</html>
