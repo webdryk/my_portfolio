@@ -10,56 +10,57 @@
   </head>
   <body >
     <!-- header -->
-    <header>
-      <nav class="flex items-center justify-between px-6 py-4 bg-white">
-        <div class="text-3xl font-bold ">
-          <h2>Amebley Success</h2>
-        </div>
-        
-        <!-- Hamburger Icon -->
-        <div class=" md:hidden text-3xl cursor-pointer" onclick="toggleMenu()">
-          &#9776;
-        </div>
+    <header class="relative"> <!-- Added relative positioning for the header -->
+  <nav class="flex items-center justify-between px-6 py-4 bg-white">
+    <div class="text-3xl font-bold ps-10">
+      <img src="./asserts/img/logo.png" alt="" class="w-11 h-11 md:w-15 md:h-15" />
+    </div>
     
-        <!-- Desktop Menu -->
-        <ul id="navMenu" class="hidden md:flex items-center gap-24 me-20 font-semibold">
-          <li class="list-none py-2 hover:border-b-4 hover:opacity-70 border-black">
-            <a href="#about" class="no-underline text-black text-2xl">About</a>
-          </li>
-          <li class="list-none py-2 hover:border-b-4 hover:opacity-70 border-black">
-            <a href="#experience" class="no-underline text-black text-2xl">Experience</a>
-          </li>
-          <li class="list-none py-2 hover:border-b-4 hover:opacity-70 border-black">
-            <a href="#project" class="no-underline text-black text-2xl">Projects</a>
-          </li>
-          <li class="list-none py-2 hover:border-b-4 hover:opacity-70 border-black">
-            <a href="#contact_header" class="no-underline text-black text-2xl">Contact</a>
-          </li>
-        </ul>
-      </nav>
-    
-      <!-- Mobile Menu -->
-      <div id="mobileMenu" class="hidden :hidden  flex flex-col px-6 pb-4 bg-white shadow-md">
-       <span class="pb-3"> 
-        <a href="#about" class="py-2 hover:border-b-2 text-lg">About</a>
+    <!-- Hamburger Icon -->
+    <div class="md:hidden text-3xl cursor-pointer" onclick="toggleMenu()">
+      &#9776;
+    </div>
+
+    <!-- Desktop Menu -->
+    <ul id="navMenu" class="hidden md:flex items-center gap-24 me-20 font-semibold">
+      <li class="list-none py-2 hover:border-b-4 hover:opacity-70 border-black">
+        <a href="#about" class="no-underline text-black text-2xl">About</a>
+      </li>
+      <li class="list-none py-2 hover:border-b-4 hover:opacity-70 border-black">
+        <a href="#experience" class="no-underline text-black text-2xl">Experience</a>
+      </li>
+      <li class="list-none py-2 hover:border-b-4 hover:opacity-70 border-black">
+        <a href="#project" class="no-underline text-black text-2xl">Projects</a>
+      </li>
+      <li class="list-none py-2 hover:border-b-4 hover:opacity-70 border-black">
+        <a href="#contact" class="no-underline text-black text-2xl">Contact</a>
+      </li>
+    </ul>
+  </nav>
+
+  <!-- Mobile Menu - Updated with absolute positioning -->
+  <div id="mobileMenu" class="hidden absolute top-full left-0 right-0 bg-white shadow-md z-50">
+    <div class="flex flex-col px-6 pb-4">
+      <span class="pb-3"> 
+        <a href="#about" class="py-2 hover:border-b-2 text-lg block">About</a>
       </span> 
-       <span class="pb-3"> 
-        <a href="#experience" class="py-2 hover:border-b-2 text-lg">Experience</a>
+      <span class="pb-3"> 
+        <a href="#experience" class="py-2 hover:border-b-2 text-lg block">Experience</a>
       </span> 
-       <span class="pb-3">
-        <a href="#project" class="py-2 hover:border-b-2 text-lg">Projects</a>
-       </span> 
-       <span class="pb-3">
-        <a href="#contact_header" class="py-2  hover:border-b-2 text-lg">Contact</a>
-       </span> 
-      </div>
-      
-    </header>
+      <span class="pb-3">
+        <a href="#project" class="py-2 hover:border-b-2 text-lg block">Projects</a>
+      </span> 
+      <span class="pb-3">
+        <a href="#contact" class="py-2 hover:border-b-2 text-lg block">Contact</a>
+      </span> 
+    </div>
+  </div>
+</header>
     
     <!-- main -->
-    <div class="min-h-screen flex flex-col md:flex-row items-center justify-center px-6 gap-12 py-10">
+    <div class="min-h-screen flex flex-col mt-0 md:flex-row items-center justify-center px-6 gap-12 ">
       <!-- Profile Image -->
-      <div class="w-42 h-42 md:w-96 md:h-96 rounded-full overflow-hidden ">
+      <div class="w-45 h-45 md:w-96 md:h-96 rounded-full overflow-hidden ">
         <img
           src="./asserts/img/profile.jpg"
           alt="profile picture"
@@ -83,7 +84,7 @@
             >Download CV</a
           >
           <a
-            href="#contact_header"
+            href="#contact"
             class="px-5 py-2 border border-gray-600 rounded-full text-black hover:bg-gray-800 hover:text-white transition"
             >Contact Info</a
           >
@@ -112,13 +113,13 @@
 <!-- About Section: Full Width and Responsive -->
 <div class="w-full  flex  items-center px-4 lg:px-20  ">
   <div class="flex flex-col lg:flex-row items-center lg:items-start gap-10">
-    <!-- Profile Image --> 
+    <!-- Profile Image -->
     <div class="flex justify-center w-full lg:w-1/2 lg:justify-end ">
-      <img
+      <img 
         src="./asserts/img/profile.jpg"
         alt="profile picture"
         class="w-72 h-72 md:w-80 md:h-80 lg:w-96 lg:h-96 object-cover rounded-3xl shadow-lg"
-      /> 
+      />
     </div>
 
     <!-- Bio Section -->
@@ -310,11 +311,11 @@
   <!-- Project 3 -->
   <div class="border border-gray-600 p-12 text-center rounded-lg">
     <img
-      src="./asserts/img/profile.jpg"
+      src="./asserts/img/currency_converter.png"
       alt="Project Three"
-      class="w-[350px] h-[300px] object-fill rounded-lg"
+      class="w-[350px] h-[300px] object-cover rounded-lg"
     />
-    <h3 class="text-2xl font-semibold mt-4">Project Three</h3>
+    <h3 class="text-2xl font-semibold mt-4">Currency Convert</h3>
     <div class="flex justify-center gap-4 py-5 text-xl">
       <a
         href="http://"
@@ -323,7 +324,7 @@
         Github
       </a>
       <a
-        href="http://"
+        href="https://currency-convertor-git-main-webdryks-projects.vercel.app"
         class="no-underline border border-gray-600 text-black px-4 py-2 rounded-full transition-colors duration-300 hover:bg-gray-900 hover:text-white"
       >
         Live Demo
