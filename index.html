@@ -116,11 +116,11 @@
     <div id="threejsBackground" class="fixed top-0 left-0 w-full h-full -z-10 opacity-20 dark:opacity-10"></div>
     
     <!-- header -->
-    <header class="relative max-h-15 sticky top-0 z-40  bg-white/20 dark:bg-gray-900/80">
-      <nav class="flex items-center justify-between px-6 ">
-        <div class="text-3xl font-bold ps-10">
+    <header class="relative max-h-15 sticky top-0 z-40 bg-white/80 dark:bg-black/80" >
+      <nav class="flex items-center justify-end px-6 ">
+        <!-- <div class="text-3xl font-bold ps-10">
           <img src="./asserts/img/logo.png" alt="" class="w-11 h-11 md:w-15 md:h-15" />
-        </div>
+        </div> -->
         
         <!-- Hamburger Icon -->
         <div class="md:hidden text-3xl cursor-pointer" onclick="toggleMenu()">
@@ -130,16 +130,16 @@
         <!-- Desktop Menu -->
         <ul id="navMenu" class="hidden md:flex items-center gap-24 me-20 font-semibold">
           <li class="list-none py-2   dark:border-white">
-            <a href="#about" class="text-black dark:text-white hover:text-gray-600 dark:hover:text-gray-300 hover:border-b-2 transition">About</a>
+            <a href="#about" class="text-xl text-black dark:text-white hover:text-gray-600 dark:hover:text-gray-300 hover:border-b-2 transition">About</a>
           </li>
           <li class="list-none py-2 dark:border-white">
-           <a href="#experience" class="text-black dark:text-white hover:text-gray-600 dark:hover:text-gray-300 hover:border-b-2 transition">Experience</a>
+           <a href="#experience" class="text-xl text-black dark:text-white hover:text-gray-600 dark:hover:text-gray-300 hover:border-b-2 transition">Experience</a>
           </li>
           <li class="list-none py-2 dark:border-white">
-           <a href="#project" class="text-black dark:text-white hover:text-gray-600 dark:hover:text-gray-300 hover:border-b-2 transition">Projects</a>
+           <a href="#project" class="text-xl text-black dark:text-white hover:text-gray-600 dark:hover:text-gray-300 hover:border-b-2 transition">Projects</a>
           </li>
           <li class="list-none py-2 dark:border-white">
-            <a href="#contact" class="text-black dark:text-white hover:text-gray-600 dark:hover:text-gray-300 hover:border-b-2 transition">Contact</a>
+            <a href="#contact" class="text-xl text-black dark:text-white hover:text-gray-600 dark:hover:text-gray-300 hover:border-b-2 transition">Contact</a>
           </li>
 
         </ul>
@@ -210,12 +210,13 @@
           </a>
         </div>
       </div>
+      
     </div>
-    
+    <div id="about" class="pt-10"></div>
 
     <!-- about -->
 <!-- About Header -->
-<div id="about" class="w-full text-center pb-10 px-4 mt-10 section-hidden">
+<div id="" class="w-full text-center pb-10 px-4 mt-10 section-hidden">
   <h3 class="text-gray-700 dark:text-gray-300 text-2xl">Get To Know More</h3>
   <h1 class="text-4xl font-bold">About Me</h1>
 </div>
@@ -269,9 +270,9 @@
     </div>
   </div>
 </div>
-
+ <div id="experience" class="pt-10"></div>
 <!-- Experience Header -->
-<div class="text-center mt-32 section-hidden" id="experience">
+<div class="text-center mt-32 section-hidden" >
   <h3 class="text-gray-700 dark:text-gray-300 font-light text-2xl">Explore My</h3>
   <h1 class="text-4xl font-bold">Experience</h1>
 </div>
@@ -370,16 +371,16 @@
     </div>
   </div>
 </div>
-
+<div id="project" class="pt-10"></div>
     <!-- projects -->
 <!-- Project Header -->
-<div class="text-center mt-[20%] section-hidden" id="project">
+<div class="text-center mt-15 section-hidden" >
   <h3 class="text-gray-700 dark:text-gray-300 text-2xl">Browse My Recent</h3>
   <h1 class="text-4xl font-bold">Projects</h1>
 </div>
 
 <!-- Project Container -->
-<div class="flex flex-wrap justify-center gap-10 mt-10 px-4 section-hidden">
+<div class="flex flex-wrap justify-center gap-10 mt-12 px-4 section-hidden">
   <!-- Project 1 -->
   <div class="border border-gray-600 dark:border-gray-400 p-12 text-center rounded-lg bg-white dark:bg-gray-800 card-3d hover:shadow-xl transition-all">
     <div class="relative overflow-hidden rounded-lg w-[350px] h-[300px]">
@@ -388,7 +389,7 @@
         alt="URL Shortner"
         class="w-full h-full object-fill transition-transform duration-500 hover:scale-110"
       />
-      <div class="absolute inset-0 bg-black bg-opacity-50 opacity-0 hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+      <div class="absolute inset-0 bg-black bg-opacity-50 opacity-0 hover:opacity-60 transition-opacity duration-300 flex items-center justify-center">
         <p class="text-white text-xl p-4">A URL shortening service with analytics</p>
       </div>
     </div>
@@ -417,7 +418,7 @@
         alt="Project Two"
         class="w-full h-full object-cover transition-transform duration-500 hover:scale-110"
       />
-      <div class="absolute inset-0 bg-black bg-opacity-50 opacity-0 hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+      <div class="absolute inset-0 bg-black bg-opacity-50 opacity-0 hover:opacity-60 transition-opacity duration-300 flex items-center justify-center">
         <p class="text-white text-xl p-4">Thesis management system for universities</p>
       </div>
     </div>
@@ -446,7 +447,7 @@
         alt="Project Three"
         class="w-full h-full object-cover transition-transform duration-500 hover:scale-110"
       />
-      <div class="absolute inset-0 bg-black bg-opacity-50 opacity-0 hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+      <div class="absolute inset-0 bg-black bg-opacity-50 opacity-0 hover:opacity-60 transition-opacity duration-300 flex items-center justify-center">
         <p class="text-white text-xl p-4">Real-time currency conversion tool</p>
       </div>
     </div>
@@ -659,27 +660,7 @@ themeToggle.addEventListener('click', () => {
     // Initialize Three.js after page loads
     window.addEventListener('load', initThreeJS);
     
-    // Smooth scroll for anchor links
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-      anchor.addEventListener('click', function (e) {
-        e.preventDefault();
-        
-        const targetId = this.getAttribute('href');
-        if (targetId === '#') return;
-        
-        const targetElement = document.querySelector(targetId);
-        if (targetElement) {
-          gsap.to(window, {
-            duration: 1,
-            scrollTo: {
-              y: targetElement,
-              offsetY: 80
-            },
-            ease: "power2.inOut"
-          });
-        }
-      });
-    });
+  
   </script>
   </body>
 </html>
