@@ -3,6 +3,8 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Amebley Success | Full Stack Developer</title>
+
     <script>
       // Function to set the initial theme based on localStorage or system preference
       const applyTheme = () => {
@@ -22,22 +24,55 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <title>Amebley Success | Full Stack Developer</title>
+    
     <script>
-      // Configure Tailwind to use Poppins and enable the 'class' dark mode strategy
       tailwind.config = {
-        darkMode: 'class', // <--- Crucial line for manual toggle
+        darkMode: 'class',
         theme: {
           extend: {
             fontFamily: {
               sans: ['Poppins', 'sans-serif'],
             },
+            // 1. Define the custom background animation utility
+            animation: {
+              'background-shine': 'shine 10s linear infinite',
+              'spin-slow-variable': 'spin-variable 4s linear infinite',
+            },
+            // 2. Define the keyframes for the animations
+            keyframes: {
+              shine: {
+                '0%': { 'background-position': '0% 50%' },
+                '50%': { 'background-position': '100% 50%' },
+                '100%': { 'background-position': '0% 50%' },
+              },
+              'spin-variable': {
+                '0%': { '--angle': '0deg' },
+                '100%': { '--angle': '360deg' },
+              },
+            },
           },
         }
       }
     </script>
+    
+    <style>
+        /* Base state for animated elements (hidden and translated down) */
+        .animate-on-scroll {
+            transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            transform: translateY(30px);
+            opacity: 0;
+        }
+        /* Target state when element is visible */
+        .animate-on-scroll.visible {
+            transform: translateY(0);
+            opacity: 1;
+        }
+    </style>
   </head>
-  <body class="bg-gray-50 text-gray-800 font-sans transition-colors duration-500 dark:bg-gray-900 dark:text-gray-200">
+  
+  <body class="text-gray-800 font-sans transition-colors duration-500 dark:text-gray-200">
+    
+    <div class="fixed inset-0 -z-10 h-full w-full bg-gray-50 dark:bg-gray-900 bg-gradient-to-tr from-sky-500/10 via-gray-50/20 to-indigo-500/10 dark:from-sky-500/10 dark:via-gray-900/40 dark:to-indigo-500/10 bg-[length:400%_400%] animate-background-shine"></div>
     
     <header class="sticky top-0 z-50 bg-white/95 backdrop-blur-sm shadow-md dark:bg-gray-900/95 dark:shadow-xl dark:border-b dark:border-gray-700">
       <nav class="container mx-auto flex items-center justify-between px-4 py-4 lg:px-8">
@@ -76,12 +111,24 @@
     
     <main class="container mx-auto px-4 py-16 min-h-[90vh] flex items-center justify-center">
       <section class="flex flex-col md:flex-row items-center justify-center gap-12 lg:gap-24 text-center md:text-left">
-        <div class="w-60 h-60 md:w-80 md:h-80 lg:w-96 lg:h-96 rounded-full overflow-hidden shadow-2xl border-4 border-sky-600/50 dark:border-sky-400/50">
-          <img
-            src="./asserts/img/profile1.JPG"
-            alt="Amebley Success profile picture"
-            class="h-full w-full object-cover"
-          />
+        <div class="relative w-60 h-60 md:w-80 md:h-80 lg:w-96 lg:h-96 rounded-full p-[3px] overflow-hidden group">
+          
+          <div class="absolute inset-0 rounded-full z-0 
+                      bg-[conic-gradient(from_var(--angle),#FBBF24_0%,#EF4444_25%,#8B5CF6_50%,#22C55E_75%,#FBBF24_100%)] 
+                      dark:bg-[conic-gradient(from_var(--angle),#FECACA_0%,#F87171_25%,#A78BFA_50%,#86EFAC_75%,#FECACA_100%)]
+                      animate-spin-slow-variable"></div>
+          
+          <div class="relative w-full h-full rounded-full overflow-hidden 
+                      shadow-2xl border-4 border-sky-600/50 dark:border-sky-400/50 
+                      bg-gray-100 dark:bg-gray-800 
+                      flex items-center justify-center
+                      backdrop-blur-sm">
+            <img
+              src="./asserts/img/profile1.JPG"
+              alt="Amebley Success profile picture"
+              class="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105"
+            />
+          </div>
         </div>
       
         <div class="flex flex-col items-center md:items-start space-y-4">
@@ -107,7 +154,7 @@
             </a>
           </div>
       
-          <div class="flex gap-6 mt-4 text-3xl text-gray-700 dark:text-gray-400">
+          <div class="flex gap-6 mt-4  text-3xl text-gray-700 dark:text-gray-400">
             <a href="https://github.com/webdryk" target="_blank" aria-label="Github Profile"
               class="hover:text-sky-600 transition duration-300 dark:hover:text-sky-400"
               ><i class="fa-brands fa-github"></i
@@ -121,7 +168,7 @@
       </section>
     </main>
 
-    <section id="about" class="container mx-auto px-4 py-20">
+    <section id="about" class="container mx-auto px-4 py-20 animate-on-scroll">
       <div class="text-center mb-12">
         <p class="text-xl text-gray-600 dark:text-gray-400">Get To Know More</p>
         <h2 class="text-4xl font-bold text-gray-900 mt-1 dark:text-white">About Me</h2>
@@ -138,14 +185,14 @@
 
         <div class="w-full lg:w-2/3 flex flex-col items-center lg:items-start gap-8 text-center lg:text-left">
           <div class="flex flex-col sm:flex-row justify-center lg:justify-start gap-6 w-full">
-            <div class="flex-1 border border-gray-300 rounded-xl px-6 py-6 shadow-lg bg-white hover:shadow-xl transition duration-300 dark:bg-gray-800 dark:border-gray-700 dark:shadow-gray-700/50">
+            <div class="flex-1 border border-gray-300 rounded-xl px-6 py-6 shadow-lg bg-white/90 hover:shadow-xl transition duration-300 dark:bg-gray-800/90 dark:border-gray-700 dark:shadow-gray-700/50 backdrop-blur-sm">
               <span class="text-3xl text-sky-600 dark:text-sky-400"><i class="fa-solid fa-award"></i></span>
               <h3 class="text-xl font-semibold mt-3 text-gray-900 dark:text-white">Experience</h3>
               <p class="text-gray-700 mt-1 dark:text-gray-400">2+ years</p>
               <p class="text-gray-700 dark:text-gray-400">Full Stack Development</p>
             </div>
 
-            <div class="flex-1 border border-gray-300 rounded-xl px-6 py-6 shadow-lg bg-white hover:shadow-xl transition duration-300 dark:bg-gray-800 dark:border-gray-700 dark:shadow-gray-700/50">
+            <div class="flex-1 border border-gray-300 rounded-xl px-6 py-6 shadow-lg bg-white/90 hover:shadow-xl transition duration-300 dark:bg-gray-800/90 dark:border-gray-700 dark:shadow-gray-700/50 backdrop-blur-sm">
               <span class="text-3xl text-sky-600 dark:text-sky-400"><i class="fa-solid fa-graduation-cap"></i></span>
               <h3 class="text-xl font-semibold mt-3 text-gray-900 dark:text-white">Education</h3>
               <p class="text-gray-700 mt-1 dark:text-gray-400">B.Sc. Computer Science</p>
@@ -155,10 +202,10 @@
 
           <div class="w-full">
             <p class="text-lg text-gray-700 leading-relaxed max-w-2xl mx-auto lg:mx-0 dark:text-gray-400">
-              I am a passionate and versatile **full-stack developer** with a strong
+              I am a passionate and versatile <strong>full-stack developer </strong> with a strong
               background in backend development and a focus on building secure,
-              user-centered web applications. My skills span **Node.js, Express,
-              MongoDB, React.js, and EJS**, with practical experience in authentication
+              user-centered web applications. My skills span <strong>Node.js, Express,
+              MongoDB, React.js, and EJS</strong>, with practical experience in authentication
               systems, admin dashboards, and responsive UI/UX design. I'm committed
               to continuous learning and delivering clean, efficient code.
             </p>
@@ -169,7 +216,7 @@
 
     <hr class="container mx-auto border-gray-200 my-10 dark:border-gray-700" />
 
-    <section id="experience" class="container mx-auto px-4 py-20">
+    <section id="experience" class="container mx-auto px-4 py-20 animate-on-scroll">
       <div class="text-center mb-12">
         <p class="text-xl text-gray-600 dark:text-gray-400">Explore My</p>
         <h2 class="text-4xl font-bold text-gray-900 mt-1 dark:text-white">Experience</h2>
@@ -177,7 +224,7 @@
 
       <div class="grid grid-cols-1 lg:grid-cols-2 gap-10">
         
-        <div class="border border-gray-300 rounded-3xl p-8 bg-white shadow-xl hover:shadow-2xl transition duration-300 dark:bg-gray-800 dark:border-gray-700 dark:shadow-gray-700/50">
+        <div class="border border-gray-300 rounded-3xl p-8 bg-white/90 shadow-xl hover:shadow-2xl transition duration-300 dark:bg-gray-800/90 dark:border-gray-700 dark:shadow-gray-700/50 backdrop-blur-sm">
           <h3 class="text-center text-3xl font-bold text-gray-800 mb-8 dark:text-white">Frontend Development</h3>
           <div class="grid grid-cols-2 gap-x-6 gap-y-8">
             <div class="flex items-center gap-3">
@@ -187,7 +234,7 @@
                 <p class="text-sm text-gray-600 dark:text-gray-400">Experienced</p>
               </div>
             </div>
-            <div class="flex items-center gap-3">
+             <div class="flex items-center gap-3">
               <i class="fa-solid fa-check-circle text-2xl text-sky-600 dark:text-sky-400"></i>
               <div>
                 <p class="font-semibold text-lg text-gray-900 dark:text-white">CSS</p>
@@ -232,7 +279,7 @@
           </div>
         </div>
 
-        <div class="border border-gray-300 rounded-3xl p-8 bg-white shadow-xl hover:shadow-2xl transition duration-300 dark:bg-gray-800 dark:border-gray-700 dark:shadow-gray-700/50">
+        <div class="border border-gray-300 rounded-3xl p-8 bg-white/90 shadow-xl hover:shadow-2xl transition duration-300 dark:bg-gray-800/90 dark:border-gray-700 dark:shadow-gray-700/50 backdrop-blur-sm">
           <h3 class="text-center text-3xl font-bold text-gray-800 mb-8 dark:text-white">Backend Development</h3>
           <div class="grid grid-cols-2 gap-x-6 gap-y-8">
             <div class="flex items-center gap-3">
@@ -271,14 +318,14 @@
     <hr class="container mx-auto border-gray-200 my-10 dark:border-gray-700" />
 
     <section id="project" class="container mx-auto px-4 py-20">
-      <div class="text-center mb-12">
+      <div class="text-center mb-12 animate-on-scroll">
         <p class="text-xl text-gray-600 dark:text-gray-400">Browse My Recent</p>
         <h2 class="text-4xl font-bold text-gray-900 mt-1 dark:text-white">Projects</h2>
       </div>
 
       <div class="flex flex-wrap justify-center gap-8">
         
-        <div class="border border-gray-300 p-6 text-center rounded-2xl shadow-lg bg-white max-w-sm hover:shadow-xl transition duration-300 dark:bg-gray-800 dark:border-gray-700 dark:shadow-gray-700/50">
+        <div class="border border-gray-300 p-6 text-center rounded-2xl shadow-lg bg-white/90 max-w-sm hover:shadow-xl transition duration-300 dark:bg-gray-800/90 dark:border-gray-700 dark:shadow-gray-700/50 backdrop-blur-sm animate-on-scroll" style="transition-delay: 0ms;">
           <img
             src="./asserts/img/urlShortner.png"
             alt="URL Shortner project preview"
@@ -303,7 +350,7 @@
           </div>
         </div>
 
-        <div class="border border-gray-300 p-6 text-center rounded-2xl shadow-lg bg-white max-w-sm hover:shadow-xl transition duration-300 dark:bg-gray-800 dark:border-gray-700 dark:shadow-gray-700/50">
+        <div class="border border-gray-300 p-6 text-center rounded-2xl shadow-lg bg-white/90 max-w-sm hover:shadow-xl transition duration-300 dark:bg-gray-800/90 dark:border-gray-700 dark:shadow-gray-700/50 backdrop-blur-sm animate-on-scroll" style="transition-delay: 150ms;">
           <img
             src="./asserts/img/TMS.png"
             alt="Thesis Management System project preview"
@@ -328,7 +375,7 @@
           </div>
         </div>
 
-        <div class="border border-gray-300 p-6 text-center rounded-2xl shadow-lg bg-white max-w-sm hover:shadow-xl transition duration-300 dark:bg-gray-800 dark:border-gray-700 dark:shadow-gray-700/50">
+        <div class="border border-gray-300 p-6 text-center rounded-2xl shadow-lg bg-white/90 max-w-sm hover:shadow-xl transition duration-300 dark:bg-gray-800/90 dark:border-gray-700 dark:shadow-gray-700/50 backdrop-blur-sm animate-on-scroll" style="transition-delay: 300ms;">
           <img
             src="./asserts/img/currency_converter.png"
             alt="Currency Converter project preview"
@@ -357,13 +404,13 @@
 
     <hr class="container mx-auto border-gray-200 my-10 dark:border-gray-700" />
 
-    <section id="contact" class="container mx-auto px-4 py-20 flex flex-col items-center">
+    <section id="contact" class="container mx-auto px-4 py-20 flex flex-col items-center animate-on-scroll">
       <div class="text-center mb-10">
         <p class="text-xl text-gray-600 dark:text-gray-400">Get in Touch</p>
         <h2 class="text-4xl font-bold text-gray-900 mt-1 dark:text-white">Contact Me</h2>
       </div>
 
-      <div class="flex flex-col sm:flex-row items-center justify-center gap-6 sm:gap-12 border-2 border-gray-300 rounded-full p-4 sm:p-5 w-full max-w-2xl shadow-lg bg-white dark:bg-gray-800 dark:border-gray-700 dark:shadow-gray-700/50">
+      <div class="flex flex-col sm:flex-row items-center justify-center gap-6 sm:gap-12 border-2 border-gray-300 rounded-full p-4 sm:p-5 w-full max-w-2xl shadow-lg bg-white/90 dark:bg-gray-800/90 dark:border-gray-700 dark:shadow-gray-700/50 backdrop-blur-sm">
         <div class="flex items-center gap-3">
           <i class="fa-solid fa-envelope text-2xl text-sky-600 dark:text-sky-400"></i>
           <p class="text-lg text-gray-700 dark:text-gray-300">
@@ -379,7 +426,7 @@
       </div>
     </section>
 
-    <footer class="bg-white border-t border-gray-200 mt-10 dark:bg-gray-900 dark:border-gray-700">
+    <footer class="bg-white/90 border-t border-gray-200 mt-10 dark:bg-gray-900/90 dark:border-gray-700 backdrop-blur-sm">
       <nav class="container mx-auto px-4 py-8">
         <ul class="flex flex-col md:flex-row items-center justify-center gap-4 md:gap-10 font-medium">
           <li><a href="#about" class="text-lg text-gray-700 hover:text-sky-600 transition duration-200 dark:text-gray-300 dark:hover:text-sky-400">About</a></li>
@@ -395,47 +442,65 @@
     </footer>
 
     <script>
-       function toggleMenu() {
-        const menu = document.getElementById("mobileMenu");
-        menu.classList.toggle("hidden");
-      }
-      
-      const themeToggle = document.getElementById('theme-toggle');
-      const htmlElement = document.documentElement;
-      const sunIcon = document.getElementById('sun-icon');
-      const moonIcon = document.getElementById('moon-icon');
+        // --- Mobile Menu Toggle ---
+        function toggleMenu() {
+            const menu = document.getElementById("mobileMenu");
+            menu.classList.toggle("hidden");
+        }
+        
+        // --- Theme Toggle ---
+        const themeToggle = document.getElementById('theme-toggle');
+        const htmlElement = document.documentElement;
+        const sunIcon = document.getElementById('sun-icon');
+        const moonIcon = document.getElementById('moon-icon');
 
-      // Function to update the icons visibility
-      const updateIcons = (isDark) => {
-          if (isDark) {
-              sunIcon.classList.remove('hidden');
-              moonIcon.classList.add('hidden');
-          } else {
-              sunIcon.classList.add('hidden');
-              moonIcon.classList.remove('hidden');
-          }
-      };
+        const updateIcons = (isDark) => {
+            if (isDark) {
+                sunIcon.classList.remove('hidden');
+                moonIcon.classList.add('hidden');
+            } else {
+                sunIcon.classList.add('hidden');
+                moonIcon.classList.remove('hidden');
+            }
+        };
+        updateIcons(htmlElement.classList.contains('dark'));
 
-      // Set initial icon state on load
-      updateIcons(htmlElement.classList.contains('dark'));
+        themeToggle.addEventListener('click', () => {
+            const isDark = htmlElement.classList.contains('dark');
+            if (isDark) {
+                htmlElement.classList.remove('dark');
+                localStorage.setItem('theme', 'light');
+                updateIcons(false);
+            } else {
+                htmlElement.classList.add('dark');
+                localStorage.setItem('theme', 'dark');
+                updateIcons(true);
+            }
+        });
 
-      // Event listener for the button click
-      themeToggle.addEventListener('click', () => {
-          // Check the current state
-          const isDark = htmlElement.classList.contains('dark');
+        // --- Scroll Reveal Animation ---
+        document.addEventListener('DOMContentLoaded', () => {
+            const sectionsToAnimate = document.querySelectorAll('.animate-on-scroll');
 
-          if (isDark) {
-              // Switch to light
-              htmlElement.classList.remove('dark');
-              localStorage.setItem('theme', 'light');
-              updateIcons(false);
-          } else {
-              // Switch to dark
-              htmlElement.classList.add('dark');
-              localStorage.setItem('theme', 'dark');
-              updateIcons(true);
-          }
-      });
+            const observer = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        // Element is visible, add the 'visible' class
+                        entry.target.classList.add('visible');
+                        // Stop observing once animated
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, {
+                // Trigger when 15% of the element is visible
+                threshold: 0.15 
+            });
+
+            // Apply the observer to all sections
+            sectionsToAnimate.forEach(section => {
+                observer.observe(section);
+            });
+        });
     </script>
   </body>
 </html>
