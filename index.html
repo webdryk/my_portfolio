@@ -3,12 +3,30 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script>
+      // Function to set the initial theme based on localStorage or system preference
+      const applyTheme = () => {
+        const savedTheme = localStorage.getItem('theme');
+        const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+
+        if (savedTheme === 'dark' || (!savedTheme && prefersDark)) {
+          document.documentElement.classList.add('dark');
+        } else {
+          document.documentElement.classList.remove('dark');
+        }
+      };
+      // Execute immediately
+      applyTheme();
+    </script>
+    
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <title>Amebley Success | Full Stack Developer</title>
     <script>
+      // Configure Tailwind to use Poppins and enable the 'class' dark mode strategy
       tailwind.config = {
+        darkMode: 'class', // <--- Crucial line for manual toggle
         theme: {
           extend: {
             fontFamily: {
@@ -19,47 +37,46 @@
       }
     </script>
   </head>
-  <body class="bg-gray-50 text-gray-800 font-sans">
+  <body class="bg-gray-50 text-gray-800 font-sans transition-colors duration-500 dark:bg-gray-900 dark:text-gray-200">
     
-    <header class="sticky top-0 z-50 bg-white/95 backdrop-blur-sm shadow-md">
+    <header class="sticky top-0 z-50 bg-white/95 backdrop-blur-sm shadow-md dark:bg-gray-900/95 dark:shadow-xl dark:border-b dark:border-gray-700">
       <nav class="container mx-auto flex items-center justify-between px-4 py-4 lg:px-8">
-        <a href="#" class="text-3xl font-bold text-sky-600 tracking-wider hover:text-sky-700 transition duration-300">
-          WEBDRYK <span class="text-gray-800">.</span>
+        <a href="#" class="text-3xl font-bold text-sky-600 tracking-wider hover:text-sky-700 transition duration-300 dark:text-sky-400 dark:hover:text-sky-300">
+          WEBDRYK <span class="text-gray-800 dark:text-gray-200"></span>
         </a>
         
         <ul class="hidden md:flex items-center space-x-8 font-medium">
-          <li>
-            <a href="#about" class="text-lg text-gray-700 hover:text-sky-600 hover:border-b-2 hover:border-sky-600 pb-1 transition duration-200">About</a>
-          </li>
-          <li>
-            <a href="#experience" class="text-lg text-gray-700 hover:text-sky-600 hover:border-b-2 hover:border-sky-600 pb-1 transition duration-200">Experience</a>
-          </li>
-          <li>
-            <a href="#project" class="text-lg text-gray-700 hover:text-sky-600 hover:border-b-2 hover:border-sky-600 pb-1 transition duration-200">Projects</a>
-          </li>
-          <li>
-            <a href="#contact" class="text-lg text-gray-700 hover:text-sky-600 hover:border-b-2 hover:border-sky-600 pb-1 transition duration-200">Contact</a>
-          </li>
+          <li><a href="#about" class="text-lg text-gray-700 hover:text-sky-600 hover:border-b-2 hover:border-sky-600 pb-1 transition duration-200 dark:text-gray-300 dark:hover:text-sky-400 dark:hover:border-sky-400">About</a></li>
+          <li><a href="#experience" class="text-lg text-gray-700 hover:text-sky-600 hover:border-b-2 hover:border-sky-600 pb-1 transition duration-200 dark:text-gray-300 dark:hover:text-sky-400 dark:hover:border-sky-400">Experience</a></li>
+          <li><a href="#project" class="text-lg text-gray-700 hover:text-sky-600 hover:border-b-2 hover:border-sky-600 pb-1 transition duration-200 dark:text-gray-300 dark:hover:text-sky-400 dark:hover:border-sky-400">Projects</a></li>
+          <li><a href="#contact" class="text-lg text-gray-700 hover:text-sky-600 hover:border-b-2 hover:border-sky-600 pb-1 transition duration-200 dark:text-gray-300 dark:hover:text-sky-400 dark:hover:border-sky-400">Contact</a></li>
         </ul>
 
-        <button class="md:hidden text-3xl text-gray-700 hover:text-sky-600" onclick="toggleMenu()">
-          <i class="fa-solid fa-bars"></i>
-        </button>
+        <div class="flex items-center space-x-4">
+            <button id="theme-toggle" class="text-2xl text-gray-700 hover:text-sky-600 dark:text-gray-300 dark:hover:text-sky-400 transition duration-300" aria-label="Toggle theme">
+                <i id="sun-icon" class="fa-solid fa-sun hidden"></i>
+                <i id="moon-icon" class="fa-solid fa-moon"></i>
+            </button>
+            
+            <button class="md:hidden text-3xl text-gray-700 hover:text-sky-600 dark:text-gray-300 dark:hover:text-sky-400" onclick="toggleMenu()">
+                <i class="fa-solid fa-bars"></i>
+            </button>
+        </div>
       </nav> 
 
-      <div id="mobileMenu" class="hidden md:hidden bg-white shadow-lg border-t border-gray-100">
+      <div id="mobileMenu" class="hidden md:hidden bg-white shadow-lg border-t border-gray-100 dark:bg-gray-800 dark:border-gray-700">
         <div class="flex flex-col p-4 text-center">
-          <a href="#about" class="py-2 text-lg text-gray-700 hover:bg-sky-50 rounded-md transition" onclick="toggleMenu()">About</a>
-          <a href="#experience" class="py-2 text-lg text-gray-700 hover:bg-sky-50 rounded-md transition" onclick="toggleMenu()">Experience</a>
-          <a href="#project" class="py-2 text-lg text-gray-700 hover:bg-sky-50 rounded-md transition" onclick="toggleMenu()">Projects</a>
-          <a href="#contact" class="py-2 text-lg text-gray-700 hover:bg-sky-50 rounded-md transition" onclick="toggleMenu()">Contact</a>
+          <a href="#about" class="py-2 text-lg text-gray-700 hover:bg-sky-50 rounded-md transition dark:text-gray-300 dark:hover:bg-gray-700" onclick="toggleMenu()">About</a>
+          <a href="#experience" class="py-2 text-lg text-gray-700 hover:bg-sky-50 rounded-md transition dark:text-gray-300 dark:hover:bg-gray-700" onclick="toggleMenu()">Experience</a>
+          <a href="#project" class="py-2 text-lg text-gray-700 hover:bg-sky-50 rounded-md transition dark:text-gray-300 dark:hover:bg-gray-700" onclick="toggleMenu()">Projects</a>
+          <a href="#contact" class="py-2 text-lg text-gray-700 hover:bg-sky-50 rounded-md transition dark:text-gray-300 dark:hover:bg-gray-700" onclick="toggleMenu()">Contact</a>
         </div>
       </div>
     </header>
     
     <main class="container mx-auto px-4 py-16 min-h-[90vh] flex items-center justify-center">
       <section class="flex flex-col md:flex-row items-center justify-center gap-12 lg:gap-24 text-center md:text-left">
-        <div class="w-60 h-60 md:w-80 md:h-80 lg:w-96 lg:h-96 rounded-full overflow-hidden shadow-2xl border-4 border-sky-600/50">
+        <div class="w-60 h-60 md:w-80 md:h-80 lg:w-96 lg:h-96 rounded-full overflow-hidden shadow-2xl border-4 border-sky-600/50 dark:border-sky-400/50">
           <img
             src="./asserts/img/profile1.JPG"
             alt="Amebley Success profile picture"
@@ -69,34 +86,34 @@
       
         <div class="flex flex-col items-center md:items-start space-y-4">
           <div>
-            <p class="text-xl text-gray-600">Hello, I'm</p>
-            <h1 class="text-5xl lg:text-6xl font-extrabold text-gray-900 mt-1">Amebley Success</h1>
-            <h2 class="text-3xl font-semibold text-sky-600 mt-1">Full Stack Developer</h2>
+            <p class="text-xl text-gray-600 dark:text-gray-400">Hello, I'm</p>
+            <h1 class="text-5xl lg:text-6xl font-extrabold text-gray-900 mt-1 dark:text-white">Amebley Success</h1>
+            <h2 class="text-3xl font-semibold text-sky-600 mt-1 dark:text-sky-400">Full Stack Developer</h2>
           </div>
       
           <div class="flex flex-wrap justify-center md:justify-start gap-4 mt-6">
             <a
               href="./asserts/img/résumé  for Amebley success -new.pdf"
-              class="px-6 py-3 border-2 border-sky-600 rounded-full text-sky-600 font-medium hover:bg-sky-600 hover:text-white transition duration-300 shadow-md"
+              class="px-6 py-3 border-2 border-sky-600 rounded-full text-sky-600 font-medium hover:bg-sky-600 hover:text-white transition duration-300 shadow-md dark:border-sky-400 dark:text-sky-400 dark:hover:bg-sky-400 dark:hover:text-gray-900"
               download
             >
               Download CV
             </a>
             <a
               href="#contact"
-              class="px-6 py-3 bg-gray-800 border-2 border-gray-800 rounded-full text-white font-medium hover:bg-gray-700 transition duration-300 shadow-md"
+              class="px-6 py-3 bg-gray-800 border-2 border-gray-800 rounded-full text-white font-medium hover:bg-gray-700 transition duration-300 shadow-md dark:bg-gray-700 dark:border-gray-700 dark:hover:bg-gray-600"
             >
               Contact Info
             </a>
           </div>
       
-          <div class="flex gap-6 mt-4 text-3xl text-gray-700">
+          <div class="flex gap-6 mt-4 text-3xl text-gray-700 dark:text-gray-400">
             <a href="https://github.com/webdryk" target="_blank" aria-label="Github Profile"
-              class="hover:text-sky-600 transition duration-300"
+              class="hover:text-sky-600 transition duration-300 dark:hover:text-sky-400"
               ><i class="fa-brands fa-github"></i
             ></a>
             <a href="http://www.linkedin.com/in/amebley-success" target="_blank" aria-label="LinkedIn Profile"
-              class="hover:text-sky-600 transition duration-300"
+              class="hover:text-sky-600 transition duration-300 dark:hover:text-sky-400"
               ><i class="fa-brands fa-linkedin"></i
             ></a>
           </div>
@@ -106,8 +123,8 @@
 
     <section id="about" class="container mx-auto px-4 py-20">
       <div class="text-center mb-12">
-        <p class="text-xl text-gray-600">Get To Know More</p>
-        <h2 class="text-4xl font-bold text-gray-900 mt-1">About Me</h2>
+        <p class="text-xl text-gray-600 dark:text-gray-400">Get To Know More</p>
+        <h2 class="text-4xl font-bold text-gray-900 mt-1 dark:text-white">About Me</h2>
       </div>
 
       <div class="flex flex-col lg:flex-row items-center lg:items-start gap-12">
@@ -121,27 +138,27 @@
 
         <div class="w-full lg:w-2/3 flex flex-col items-center lg:items-start gap-8 text-center lg:text-left">
           <div class="flex flex-col sm:flex-row justify-center lg:justify-start gap-6 w-full">
-            <div class="flex-1 border border-gray-300 rounded-xl px-6 py-6 shadow-lg bg-white hover:shadow-xl transition duration-300">
-              <span class="text-3xl text-sky-600"><i class="fa-solid fa-award"></i></span>
-              <h3 class="text-xl font-semibold mt-3 text-gray-900">Experience</h3>
-              <p class="text-gray-700 mt-1">2+ years</p>
-              <p class="text-gray-700">Full Stack Development</p>
+            <div class="flex-1 border border-gray-300 rounded-xl px-6 py-6 shadow-lg bg-white hover:shadow-xl transition duration-300 dark:bg-gray-800 dark:border-gray-700 dark:shadow-gray-700/50">
+              <span class="text-3xl text-sky-600 dark:text-sky-400"><i class="fa-solid fa-award"></i></span>
+              <h3 class="text-xl font-semibold mt-3 text-gray-900 dark:text-white">Experience</h3>
+              <p class="text-gray-700 mt-1 dark:text-gray-400">2+ years</p>
+              <p class="text-gray-700 dark:text-gray-400">Full Stack Development</p>
             </div>
 
-            <div class="flex-1 border border-gray-300 rounded-xl px-6 py-6 shadow-lg bg-white hover:shadow-xl transition duration-300">
-              <span class="text-3xl text-sky-600"><i class="fa-solid fa-graduation-cap"></i></span>
-              <h3 class="text-xl font-semibold mt-3 text-gray-900">Education</h3>
-              <p class="text-gray-700 mt-1">B.Sc. Computer Science</p>
-              <p class="text-gray-700">HND. Computer Science</p>
+            <div class="flex-1 border border-gray-300 rounded-xl px-6 py-6 shadow-lg bg-white hover:shadow-xl transition duration-300 dark:bg-gray-800 dark:border-gray-700 dark:shadow-gray-700/50">
+              <span class="text-3xl text-sky-600 dark:text-sky-400"><i class="fa-solid fa-graduation-cap"></i></span>
+              <h3 class="text-xl font-semibold mt-3 text-gray-900 dark:text-white">Education</h3>
+              <p class="text-gray-700 mt-1 dark:text-gray-400">B.Sc. Computer Science</p>
+              <p class="text-gray-700 dark:text-gray-400">HND. Computer Science</p>
             </div>
           </div>
 
           <div class="w-full">
-            <p class="text-lg text-gray-700 leading-relaxed max-w-2xl mx-auto lg:mx-0">
-              I am a passionate and versatile <strong>full-stack developer</strong> with a strong
+            <p class="text-lg text-gray-700 leading-relaxed max-w-2xl mx-auto lg:mx-0 dark:text-gray-400">
+              I am a passionate and versatile **full-stack developer** with a strong
               background in backend development and a focus on building secure,
-              user-centered web applications. My skills span <strong>Node.js, Express,
-              MongoDB, React.js, and EJS</strong>, with practical experience in authentication
+              user-centered web applications. My skills span **Node.js, Express,
+              MongoDB, React.js, and EJS**, with practical experience in authentication
               systems, admin dashboards, and responsive UI/UX design. I'm committed
               to continuous learning and delivering clean, efficient code.
             </p>
@@ -150,100 +167,100 @@
       </div>
     </section>
 
-    <hr class="container mx-auto border-gray-200 my-10" />
+    <hr class="container mx-auto border-gray-200 my-10 dark:border-gray-700" />
 
     <section id="experience" class="container mx-auto px-4 py-20">
       <div class="text-center mb-12">
-        <p class="text-xl text-gray-600">Explore My</p>
-        <h2 class="text-4xl font-bold text-gray-900 mt-1">Experience</h2>
+        <p class="text-xl text-gray-600 dark:text-gray-400">Explore My</p>
+        <h2 class="text-4xl font-bold text-gray-900 mt-1 dark:text-white">Experience</h2>
       </div>
 
       <div class="grid grid-cols-1 lg:grid-cols-2 gap-10">
         
-        <div class="border border-gray-300 rounded-3xl p-8 bg-white shadow-xl hover:shadow-2xl transition duration-300">
-          <h3 class="text-center text-3xl font-bold text-gray-800 mb-8">Frontend Development</h3>
+        <div class="border border-gray-300 rounded-3xl p-8 bg-white shadow-xl hover:shadow-2xl transition duration-300 dark:bg-gray-800 dark:border-gray-700 dark:shadow-gray-700/50">
+          <h3 class="text-center text-3xl font-bold text-gray-800 mb-8 dark:text-white">Frontend Development</h3>
           <div class="grid grid-cols-2 gap-x-6 gap-y-8">
             <div class="flex items-center gap-3">
-              <i class="fa-solid fa-check-circle text-2xl text-sky-600"></i>
+              <i class="fa-solid fa-check-circle text-2xl text-sky-600 dark:text-sky-400"></i>
               <div>
-                <p class="font-semibold text-lg text-gray-900">HTML</p>
-                <p class="text-sm text-gray-600">Experienced</p>
+                <p class="font-semibold text-lg text-gray-900 dark:text-white">HTML</p>
+                <p class="text-sm text-gray-600 dark:text-gray-400">Experienced</p>
               </div>
             </div>
             <div class="flex items-center gap-3">
-              <i class="fa-solid fa-check-circle text-2xl text-sky-600"></i>
+              <i class="fa-solid fa-check-circle text-2xl text-sky-600 dark:text-sky-400"></i>
               <div>
-                <p class="font-semibold text-lg text-gray-900">CSS</p>
-                <p class="text-sm text-gray-600">Experienced</p>
+                <p class="font-semibold text-lg text-gray-900 dark:text-white">CSS</p>
+                <p class="text-sm text-gray-600 dark:text-gray-400">Experienced</p>
               </div>
             </div>
             <div class="flex items-center gap-3">
-              <i class="fa-solid fa-check-circle text-2xl text-sky-600"></i>
+              <i class="fa-solid fa-check-circle text-2xl text-sky-600 dark:text-sky-400"></i>
               <div>
-                <p class="font-semibold text-lg text-gray-900">Tailwind CSS</p>
-                <p class="text-sm text-gray-600">Intermediate</p>
+                <p class="font-semibold text-lg text-gray-900 dark:text-white">Tailwind CSS</p>
+                <p class="text-sm text-gray-600 dark:text-gray-400">Intermediate</p>
               </div>
             </div>
             <div class="flex items-center gap-3">
-              <i class="fa-solid fa-check-circle text-2xl text-sky-600"></i>
+              <i class="fa-solid fa-check-circle text-2xl text-sky-600 dark:text-sky-400"></i>
               <div>
-                <p class="font-semibold text-lg text-gray-900">SASS</p>
-                <p class="text-sm text-gray-600">Beginner</p>
+                <p class="font-semibold text-lg text-gray-900 dark:text-white">SASS</p>
+                <p class="text-sm text-gray-600 dark:text-gray-400">Beginner</p>
               </div>
             </div>
             <div class="flex items-center gap-3">
-              <i class="fa-solid fa-check-circle text-2xl text-sky-600"></i>
+              <i class="fa-solid fa-check-circle text-2xl text-sky-600 dark:text-sky-400"></i>
               <div>
-                <p class="font-semibold text-lg text-gray-900">JavaScript</p>
-                <p class="text-sm text-gray-600">Experienced</p>
+                <p class="font-semibold text-lg text-gray-900 dark:text-white">JavaScript</p>
+                <p class="text-sm text-gray-600 dark:text-gray-400">Experienced</p>
               </div>
             </div>
             <div class="flex items-center gap-3">
-              <i class="fa-solid fa-check-circle text-2xl text-sky-600"></i>
+              <i class="fa-solid fa-check-circle text-2xl text-sky-600 dark:text-sky-400"></i>
               <div>
-                <p class="font-semibold text-lg text-gray-900">TypeScript</p>
-                <p class="text-sm text-gray-600">Beginner</p>
+                <p class="font-semibold text-lg text-gray-900 dark:text-white">TypeScript</p>
+                <p class="text-sm text-gray-600 dark:text-gray-400">Beginner</p>
               </div>
             </div>
             <div class="flex items-center gap-3">
-              <i class="fa-solid fa-check-circle text-2xl text-sky-600"></i>
+              <i class="fa-solid fa-check-circle text-2xl text-sky-600 dark:text-sky-400"></i>
               <div>
-                <p class="font-semibold text-lg text-gray-900">React JS</p>
-                <p class="text-sm text-gray-600">Intermediate</p>
+                <p class="font-semibold text-lg text-gray-900 dark:text-white">React JS</p>
+                <p class="text-sm text-gray-600 dark:text-gray-400">Intermediate</p>
               </div>
             </div>
           </div>
         </div>
 
-        <div class="border border-gray-300 rounded-3xl p-8 bg-white shadow-xl hover:shadow-2xl transition duration-300">
-          <h3 class="text-center text-3xl font-bold text-gray-800 mb-8">Backend Development</h3>
+        <div class="border border-gray-300 rounded-3xl p-8 bg-white shadow-xl hover:shadow-2xl transition duration-300 dark:bg-gray-800 dark:border-gray-700 dark:shadow-gray-700/50">
+          <h3 class="text-center text-3xl font-bold text-gray-800 mb-8 dark:text-white">Backend Development</h3>
           <div class="grid grid-cols-2 gap-x-6 gap-y-8">
             <div class="flex items-center gap-3">
-              <i class="fa-solid fa-check-circle text-2xl text-sky-600"></i>
+              <i class="fa-solid fa-check-circle text-2xl text-sky-600 dark:text-sky-400"></i>
               <div>
-                <p class="font-semibold text-lg text-gray-900">Node Js</p>
-                <p class="text-sm text-gray-600">Experienced</p>
+                <p class="font-semibold text-lg text-gray-900 dark:text-white">Node Js</p>
+                <p class="text-sm text-gray-600 dark:text-gray-400">Experienced</p>
               </div>
             </div>
             <div class="flex items-center gap-3">
-              <i class="fa-solid fa-check-circle text-2xl text-sky-600"></i>
+              <i class="fa-solid fa-check-circle text-2xl text-sky-600 dark:text-sky-400"></i>
               <div>
-                <p class="font-semibold text-lg text-gray-900">Express Js</p>
-                <p class="text-sm text-gray-600">Experienced</p>
+                <p class="font-semibold text-lg text-gray-900 dark:text-white">Express Js</p>
+                <p class="text-sm text-gray-600 dark:text-gray-400">Experienced</p>
               </div>
             </div>
             <div class="flex items-center gap-3">
-              <i class="fa-solid fa-check-circle text-2xl text-sky-600"></i>
+              <i class="fa-solid fa-check-circle text-2xl text-sky-600 dark:text-sky-400"></i>
               <div>
-                <p class="font-semibold text-lg text-gray-900">MongoDB</p>
-                <p class="text-sm text-gray-600">Experienced</p>
+                <p class="font-semibold text-lg text-gray-900 dark:text-white">MongoDB</p>
+                <p class="text-sm text-gray-600 dark:text-gray-400">Experienced</p>
               </div>
             </div>
             <div class="flex items-center gap-3">
-              <i class="fa-solid fa-check-circle text-2xl text-sky-600"></i>
+              <i class="fa-solid fa-check-circle text-2xl text-sky-600 dark:text-sky-400"></i>
               <div>
-                <p class="font-semibold text-lg text-gray-900">Git</p>
-                <p class="text-sm text-gray-600">Experienced</p>
+                <p class="font-semibold text-lg text-gray-900 dark:text-white">Git</p>
+                <p class="text-sm text-gray-600 dark:text-gray-400">Experienced</p>
               </div>
             </div>
           </div>
@@ -251,34 +268,34 @@
       </div>
     </section>
     
-    <hr class="container mx-auto border-gray-200 my-10" />
+    <hr class="container mx-auto border-gray-200 my-10 dark:border-gray-700" />
 
     <section id="project" class="container mx-auto px-4 py-20">
       <div class="text-center mb-12">
-        <p class="text-xl text-gray-600">Browse My Recent</p>
-        <h2 class="text-4xl font-bold text-gray-900 mt-1">Projects</h2>
+        <p class="text-xl text-gray-600 dark:text-gray-400">Browse My Recent</p>
+        <h2 class="text-4xl font-bold text-gray-900 mt-1 dark:text-white">Projects</h2>
       </div>
 
       <div class="flex flex-wrap justify-center gap-8">
         
-        <div class="border border-gray-300 p-6 text-center rounded-2xl shadow-lg bg-white max-w-sm hover:shadow-xl transition duration-300">
+        <div class="border border-gray-300 p-6 text-center rounded-2xl shadow-lg bg-white max-w-sm hover:shadow-xl transition duration-300 dark:bg-gray-800 dark:border-gray-700 dark:shadow-gray-700/50">
           <img
             src="./asserts/img/urlShortner.png"
             alt="URL Shortner project preview"
-            class="w-full h-56 object-cover rounded-xl mb-5 border border-gray-100"
+            class="w-full h-56 object-cover rounded-xl mb-5 border border-gray-100 dark:border-gray-700"
           />
-          <h3 class="text-2xl font-semibold text-gray-900 mb-4">URL Shortner</h3>
+          <h3 class="text-2xl font-semibold text-gray-900 mb-4 dark:text-white">URL Shortner</h3>
           <div class="flex justify-center gap-4 text-lg">
             <a
               href="https://github.com/webdryk/urlshortner"
-              class="px-5 py-2 border-2 border-gray-800 text-gray-800 rounded-full font-medium hover:bg-gray-800 hover:text-white transition duration-300"
+              class="px-5 py-2 border-2 border-gray-800 text-gray-800 rounded-full font-medium hover:bg-gray-800 hover:text-white transition duration-300 dark:border-gray-400 dark:text-gray-400 dark:hover:bg-gray-400 dark:hover:text-gray-900"
               target="_blank"
             >
               Github
             </a>
             <a
               href="https://urlshortner-git-main-webdryks-projects.vercel.app"
-              class="px-5 py-2 bg-sky-600 border-2 border-sky-600 text-white rounded-full font-medium hover:bg-sky-700 hover:border-sky-700 transition duration-300"
+              class="px-5 py-2 bg-sky-600 border-2 border-sky-600 text-white rounded-full font-medium hover:bg-sky-700 hover:border-sky-700 transition duration-300 dark:bg-sky-400 dark:border-sky-400 dark:text-gray-900 dark:hover:bg-sky-500"
               target="_blank"
             >
               Live Demo
@@ -286,24 +303,24 @@
           </div>
         </div>
 
-        <div class="border border-gray-300 p-6 text-center rounded-2xl shadow-lg bg-white max-w-sm hover:shadow-xl transition duration-300">
+        <div class="border border-gray-300 p-6 text-center rounded-2xl shadow-lg bg-white max-w-sm hover:shadow-xl transition duration-300 dark:bg-gray-800 dark:border-gray-700 dark:shadow-gray-700/50">
           <img
             src="./asserts/img/TMS.png"
             alt="Thesis Management System project preview"
-            class="w-full h-56 object-cover rounded-xl mb-5 border border-gray-100"
+            class="w-full h-56 object-cover rounded-xl mb-5 border border-gray-100 dark:border-gray-700"
           />
-          <h3 class="text-2xl font-semibold text-gray-900 mb-4">Thesis Management System</h3>
+          <h3 class="text-2xl font-semibold text-gray-900 mb-4 dark:text-white">Thesis Management System</h3>
           <div class="flex justify-center gap-4 text-lg">
             <a
               href="https://github.com/webdryk/Thesis-Management-System"
-              class="px-5 py-2 border-2 border-gray-800 text-gray-800 rounded-full font-medium hover:bg-gray-800 hover:text-white transition duration-300"
+              class="px-5 py-2 border-2 border-gray-800 text-gray-800 rounded-full font-medium hover:bg-gray-800 hover:text-white transition duration-300 dark:border-gray-400 dark:text-gray-400 dark:hover:bg-gray-400 dark:hover:text-gray-900"
               target="_blank"
             >
               Github
             </a>
             <a
               href="https://thesis-management-system-git-main-webdryks-projects.vercel.app"
-              class="px-5 py-2 bg-sky-600 border-2 border-sky-600 text-white rounded-full font-medium hover:bg-sky-700 hover:border-sky-700 transition duration-300"
+              class="px-5 py-2 bg-sky-600 border-2 border-sky-600 text-white rounded-full font-medium hover:bg-sky-700 hover:border-sky-700 transition duration-300 dark:bg-sky-400 dark:border-sky-400 dark:text-gray-900 dark:hover:bg-sky-500"
               target="_blank"
             >
               Live Demo
@@ -311,24 +328,24 @@
           </div>
         </div>
 
-        <div class="border border-gray-300 p-6 text-center rounded-2xl shadow-lg bg-white max-w-sm hover:shadow-xl transition duration-300">
+        <div class="border border-gray-300 p-6 text-center rounded-2xl shadow-lg bg-white max-w-sm hover:shadow-xl transition duration-300 dark:bg-gray-800 dark:border-gray-700 dark:shadow-gray-700/50">
           <img
             src="./asserts/img/currency_converter.png"
             alt="Currency Converter project preview"
-            class="w-full h-56 object-cover rounded-xl mb-5 border border-gray-100"
+            class="w-full h-56 object-cover rounded-xl mb-5 border border-gray-100 dark:border-gray-700"
           />
-          <h3 class="text-2xl font-semibold text-gray-900 mb-4">Currency Converter</h3>
+          <h3 class="text-2xl font-semibold text-gray-900 mb-4 dark:text-white">Currency Converter</h3>
           <div class="flex justify-center gap-4 text-lg">
             <a
               href="http://"
-              class="px-5 py-2 border-2 border-gray-800 text-gray-800 rounded-full font-medium hover:bg-gray-800 hover:text-white transition duration-300"
+              class="px-5 py-2 border-2 border-gray-800 text-gray-800 rounded-full font-medium hover:bg-gray-800 hover:text-white transition duration-300 dark:border-gray-400 dark:text-gray-400 dark:hover:bg-gray-400 dark:hover:text-gray-900"
               target="_blank"
             >
               Github
             </a>
             <a
               href="https://currency-convertor-git-main-webdryks-projects.vercel.app"
-              class="px-5 py-2 bg-sky-600 border-2 border-sky-600 text-white rounded-full font-medium hover:bg-sky-700 hover:border-sky-700 transition duration-300"
+              class="px-5 py-2 bg-sky-600 border-2 border-sky-600 text-white rounded-full font-medium hover:bg-sky-700 hover:border-sky-700 transition duration-300 dark:bg-sky-400 dark:border-sky-400 dark:text-gray-900 dark:hover:bg-sky-500"
               target="_blank"
             >
               Live Demo
@@ -338,49 +355,41 @@
       </div>
     </section>
 
-    <hr class="container mx-auto border-gray-200 my-10" />
+    <hr class="container mx-auto border-gray-200 my-10 dark:border-gray-700" />
 
     <section id="contact" class="container mx-auto px-4 py-20 flex flex-col items-center">
       <div class="text-center mb-10">
-        <p class="text-xl text-gray-600">Get in Touch</p>
-        <h2 class="text-4xl font-bold text-gray-900 mt-1">Contact Me</h2>
+        <p class="text-xl text-gray-600 dark:text-gray-400">Get in Touch</p>
+        <h2 class="text-4xl font-bold text-gray-900 mt-1 dark:text-white">Contact Me</h2>
       </div>
 
-      <div class="flex flex-col sm:flex-row items-center justify-center gap-6 sm:gap-12 border-2 border-gray-300 rounded-full p-4 sm:p-5 w-full max-w-2xl shadow-lg bg-white">
+      <div class="flex flex-col sm:flex-row items-center justify-center gap-6 sm:gap-12 border-2 border-gray-300 rounded-full p-4 sm:p-5 w-full max-w-2xl shadow-lg bg-white dark:bg-gray-800 dark:border-gray-700 dark:shadow-gray-700/50">
         <div class="flex items-center gap-3">
-          <i class="fa-solid fa-envelope text-2xl text-sky-600"></i>
-          <p class="text-lg text-gray-700">
-            <a href="mailto:saamebley@gmail.com" class="hover:text-sky-600 transition">saamebley@gmail.com</a>
+          <i class="fa-solid fa-envelope text-2xl text-sky-600 dark:text-sky-400"></i>
+          <p class="text-lg text-gray-700 dark:text-gray-300">
+            <a href="mailto:saamebley@gmail.com" class="hover:text-sky-600 transition dark:hover:text-sky-400">saamebley@gmail.com</a>
           </p>
         </div>
         <div class="flex items-center gap-3">
-          <i class="fa-brands fa-linkedin text-2xl text-sky-600"></i>
-          <p class="text-lg text-gray-700">
-            <a href="http://www.linkedin.com/in/amebley-success" class="hover:text-sky-600 transition" target="_blank">LinkedIn Profile</a>
+          <i class="fa-brands fa-linkedin text-2xl text-sky-600 dark:text-sky-400"></i>
+          <p class="text-lg text-gray-700 dark:text-gray-300">
+            <a href="http://www.linkedin.com/in/amebley-success" class="hover:text-sky-600 transition dark:hover:text-sky-400" target="_blank">LinkedIn Profile</a>
           </p>
         </div>
       </div>
     </section>
 
-    <footer class="bg-white border-t border-gray-200 mt-10">
+    <footer class="bg-white border-t border-gray-200 mt-10 dark:bg-gray-900 dark:border-gray-700">
       <nav class="container mx-auto px-4 py-8">
         <ul class="flex flex-col md:flex-row items-center justify-center gap-4 md:gap-10 font-medium">
-          <li>
-            <a href="#about" class="text-lg text-gray-700 hover:text-sky-600 transition duration-200">About</a>
-          </li>
-          <li>
-            <a href="#experience" class="text-lg text-gray-700 hover:text-sky-600 transition duration-200">Experience</a>
-          </li>
-          <li>
-            <a href="#project" class="text-lg text-gray-700 hover:text-sky-600 transition duration-200">Projects</a>
-          </li>
-          <li>
-            <a href="#contact" class="text-lg text-gray-700 hover:text-sky-600 transition duration-200">Contact</a>
-          </li>
+          <li><a href="#about" class="text-lg text-gray-700 hover:text-sky-600 transition duration-200 dark:text-gray-300 dark:hover:text-sky-400">About</a></li>
+          <li><a href="#experience" class="text-lg text-gray-700 hover:text-sky-600 transition duration-200 dark:text-gray-300 dark:hover:text-sky-400">Experience</a></li>
+          <li><a href="#project" class="text-lg text-gray-700 hover:text-sky-600 transition duration-200 dark:text-gray-300 dark:hover:text-sky-400">Projects</a></li>
+          <li><a href="#contact" class="text-lg text-gray-700 hover:text-sky-600 transition duration-200 dark:text-gray-300 dark:hover:text-sky-400">Contact</a></li>
         </ul>
       </nav>
 
-      <div class="text-center py-4 border-t border-gray-100 text-gray-500 text-sm">
+      <div class="text-center py-4 border-t border-gray-100 text-gray-500 text-sm dark:border-gray-800 dark:text-gray-500">
         <p>Copyright &copy; 2025 Webdryk. All Rights Reserved.</p>
       </div>
     </footer>
@@ -390,6 +399,43 @@
         const menu = document.getElementById("mobileMenu");
         menu.classList.toggle("hidden");
       }
+      
+      const themeToggle = document.getElementById('theme-toggle');
+      const htmlElement = document.documentElement;
+      const sunIcon = document.getElementById('sun-icon');
+      const moonIcon = document.getElementById('moon-icon');
+
+      // Function to update the icons visibility
+      const updateIcons = (isDark) => {
+          if (isDark) {
+              sunIcon.classList.remove('hidden');
+              moonIcon.classList.add('hidden');
+          } else {
+              sunIcon.classList.add('hidden');
+              moonIcon.classList.remove('hidden');
+          }
+      };
+
+      // Set initial icon state on load
+      updateIcons(htmlElement.classList.contains('dark'));
+
+      // Event listener for the button click
+      themeToggle.addEventListener('click', () => {
+          // Check the current state
+          const isDark = htmlElement.classList.contains('dark');
+
+          if (isDark) {
+              // Switch to light
+              htmlElement.classList.remove('dark');
+              localStorage.setItem('theme', 'light');
+              updateIcons(false);
+          } else {
+              // Switch to dark
+              htmlElement.classList.add('dark');
+              localStorage.setItem('theme', 'dark');
+              updateIcons(true);
+          }
+      });
     </script>
   </body>
 </html>
