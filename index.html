@@ -1,396 +1,395 @@
 <!DOCTYPE html>
-<html lang="en" >
+<html lang="en" class="scroll-smooth">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
-    <title>Webdryk 🤓</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <title>Amebley Success | Full Stack Developer</title>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            fontFamily: {
+              sans: ['Poppins', 'sans-serif'],
+            },
+          },
+        }
+      }
+    </script>
   </head>
-  <body class="scroll-smooth" >
-    <!-- header -->
-    <header class="relative max-h-15"> <!-- Added relative positioning for the header -->
-  <nav class="flex items-center justify-between px-6 py-4 bg-white">
-    <div class="text-3xl font-bold ps-10">
-      <img src="./asserts/img/logo.png" alt="" class="w-11 h-11 md:w-15 md:h-15" />
-    </div>
+  <body class="bg-gray-50 text-gray-800 font-sans">
     
-    <!-- Hamburger Icon -->
-    <div class="md:hidden text-3xl cursor-pointer" onclick="toggleMenu()">
-      &#9776;
-    </div>
+    <header class="sticky top-0 z-50 bg-white/95 backdrop-blur-sm shadow-md">
+      <nav class="container mx-auto flex items-center justify-between px-4 py-4 lg:px-8">
+        <a href="#" class="text-3xl font-bold text-sky-600 tracking-wider hover:text-sky-700 transition duration-300">
+          WEBDRYK <span class="text-gray-800">.</span>
+        </a>
+        
+        <ul class="hidden md:flex items-center space-x-8 font-medium">
+          <li>
+            <a href="#about" class="text-lg text-gray-700 hover:text-sky-600 hover:border-b-2 hover:border-sky-600 pb-1 transition duration-200">About</a>
+          </li>
+          <li>
+            <a href="#experience" class="text-lg text-gray-700 hover:text-sky-600 hover:border-b-2 hover:border-sky-600 pb-1 transition duration-200">Experience</a>
+          </li>
+          <li>
+            <a href="#project" class="text-lg text-gray-700 hover:text-sky-600 hover:border-b-2 hover:border-sky-600 pb-1 transition duration-200">Projects</a>
+          </li>
+          <li>
+            <a href="#contact" class="text-lg text-gray-700 hover:text-sky-600 hover:border-b-2 hover:border-sky-600 pb-1 transition duration-200">Contact</a>
+          </li>
+        </ul>
 
-    <!-- Desktop Menu -->
-    <ul id="navMenu" class="hidden md:flex items-center gap-24 me-20 font-semibold">
-      <li class="list-none py-2 hover:border-b-4 hover:opacity-70 border-black">
-        <a href="#about" class="no-underline text-black text-2xl">About</a>
-      </li>
-      <li class="list-none py-2 hover:border-b-4 hover:opacity-70 border-black">
-        <a href="#experience" class="no-underline text-black text-2xl">Experience</a>
-      </li>
-      <li class="list-none py-2 hover:border-b-4 hover:opacity-70 border-black">
-        <a href="#project" class="no-underline text-black text-2xl">Projects</a>
-      </li>
-      <li class="list-none py-2 hover:border-b-4 hover:opacity-70 border-black">
-        <a href="#contact" class="no-underline text-black text-2xl">Contact</a>
-      </li>
-    </ul>
-  </nav> 
+        <button class="md:hidden text-3xl text-gray-700 hover:text-sky-600" onclick="toggleMenu()">
+          <i class="fa-solid fa-bars"></i>
+        </button>
+      </nav> 
 
-  <!-- Mobile Menu - Updated with absolute positioning -->
-  <div id="mobileMenu" class="hidden absolute top-full left-0 right-0 bg-white shadow-md z-50">
-    <div class="flex flex-col px-6 pb-4">
-      <span class="pb-3"> 
-        <a href="#about" class="py-2 hover:border-b-2 text-lg block">About</a>
-      </span> 
-      <span class="pb-3"> 
-        <a href="#experience" class="py-2 hover:border-b-2 text-lg block">Experience</a>
-      </span> 
-      <span class="pb-3">
-        <a href="#project" class="py-2 hover:border-b-2 text-lg block">Projects</a>
-      </span> 
-      <span class="pb-3">
-        <a href="#contact" class="py-2 hover:border-b-2 text-lg block">Contact</a>
-      </span> 
-    </div>
-  </div>
-</header>
+      <div id="mobileMenu" class="hidden md:hidden bg-white shadow-lg border-t border-gray-100">
+        <div class="flex flex-col p-4 text-center">
+          <a href="#about" class="py-2 text-lg text-gray-700 hover:bg-sky-50 rounded-md transition" onclick="toggleMenu()">About</a>
+          <a href="#experience" class="py-2 text-lg text-gray-700 hover:bg-sky-50 rounded-md transition" onclick="toggleMenu()">Experience</a>
+          <a href="#project" class="py-2 text-lg text-gray-700 hover:bg-sky-50 rounded-md transition" onclick="toggleMenu()">Projects</a>
+          <a href="#contact" class="py-2 text-lg text-gray-700 hover:bg-sky-50 rounded-md transition" onclick="toggleMenu()">Contact</a>
+        </div>
+      </div>
+    </header>
     
-    <!-- main -->
-    <div class="min-h-screen flex flex-col mt-0 md:flex-row items-center justify-center px-6 gap-12 ">
-      <!-- Profile Image -->
-      <div class="w-45 h-45 md:w-96 md:h-96 rounded-full overflow-hidden ">
-        <img
-          src="./asserts/img/profile1.JPG"
-          alt="profile picture"
-          class="h-full w-auto object-cover"
-        />
+    <main class="container mx-auto px-4 py-16 min-h-[90vh] flex items-center justify-center">
+      <section class="flex flex-col md:flex-row items-center justify-center gap-12 lg:gap-24 text-center md:text-left">
+        <div class="w-60 h-60 md:w-80 md:h-80 lg:w-96 lg:h-96 rounded-full overflow-hidden shadow-2xl border-4 border-sky-600/50">
+          <img
+            src="./asserts/img/profile1.JPG"
+            alt="Amebley Success profile picture"
+            class="h-full w-full object-cover"
+          />
+        </div>
+      
+        <div class="flex flex-col items-center md:items-start space-y-4">
+          <div>
+            <p class="text-xl text-gray-600">Hello, I'm</p>
+            <h1 class="text-5xl lg:text-6xl font-extrabold text-gray-900 mt-1">Amebley Success</h1>
+            <h2 class="text-3xl font-semibold text-sky-600 mt-1">Full Stack Developer</h2>
+          </div>
+      
+          <div class="flex flex-wrap justify-center md:justify-start gap-4 mt-6">
+            <a
+              href="./asserts/img/résumé  for Amebley success -new.pdf"
+              class="px-6 py-3 border-2 border-sky-600 rounded-full text-sky-600 font-medium hover:bg-sky-600 hover:text-white transition duration-300 shadow-md"
+              download
+            >
+              Download CV
+            </a>
+            <a
+              href="#contact"
+              class="px-6 py-3 bg-gray-800 border-2 border-gray-800 rounded-full text-white font-medium hover:bg-gray-700 transition duration-300 shadow-md"
+            >
+              Contact Info
+            </a>
+          </div>
+      
+          <div class="flex gap-6 mt-4 text-3xl text-gray-700">
+            <a href="https://github.com/webdryk" target="_blank" aria-label="Github Profile"
+              class="hover:text-sky-600 transition duration-300"
+              ><i class="fa-brands fa-github"></i
+            ></a>
+            <a href="http://www.linkedin.com/in/amebley-success" target="_blank" aria-label="LinkedIn Profile"
+              class="hover:text-sky-600 transition duration-300"
+              ><i class="fa-brands fa-linkedin"></i
+            ></a>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <section id="about" class="container mx-auto px-4 py-20">
+      <div class="text-center mb-12">
+        <p class="text-xl text-gray-600">Get To Know More</p>
+        <h2 class="text-4xl font-bold text-gray-900 mt-1">About Me</h2>
       </div>
+
+      <div class="flex flex-col lg:flex-row items-center lg:items-start gap-12">
+        <div class="flex-shrink-0 w-full flex justify-center lg:w-1/3">
+          <img 
+            src="./asserts/img/profile1.JPG"
+            alt="profile picture"
+            class="w-72 h-72 md:w-80 md:h-80 object-cover rounded-3xl shadow-xl"
+          />
+        </div>
+
+        <div class="w-full lg:w-2/3 flex flex-col items-center lg:items-start gap-8 text-center lg:text-left">
+          <div class="flex flex-col sm:flex-row justify-center lg:justify-start gap-6 w-full">
+            <div class="flex-1 border border-gray-300 rounded-xl px-6 py-6 shadow-lg bg-white hover:shadow-xl transition duration-300">
+              <span class="text-3xl text-sky-600"><i class="fa-solid fa-award"></i></span>
+              <h3 class="text-xl font-semibold mt-3 text-gray-900">Experience</h3>
+              <p class="text-gray-700 mt-1">2+ years</p>
+              <p class="text-gray-700">Full Stack Development</p>
+            </div>
+
+            <div class="flex-1 border border-gray-300 rounded-xl px-6 py-6 shadow-lg bg-white hover:shadow-xl transition duration-300">
+              <span class="text-3xl text-sky-600"><i class="fa-solid fa-graduation-cap"></i></span>
+              <h3 class="text-xl font-semibold mt-3 text-gray-900">Education</h3>
+              <p class="text-gray-700 mt-1">B.Sc. Computer Science</p>
+              <p class="text-gray-700">HND. Computer Science</p>
+            </div>
+          </div>
+
+          <div class="w-full">
+            <p class="text-lg text-gray-700 leading-relaxed max-w-2xl mx-auto lg:mx-0">
+              I am a passionate and versatile <strong>full-stack developer</strong> with a strong
+              background in backend development and a focus on building secure,
+              user-centered web applications. My skills span <strong>Node.js, Express,
+              MongoDB, React.js, and EJS</strong>, with practical experience in authentication
+              systems, admin dashboards, and responsive UI/UX design. I'm committed
+              to continuous learning and delivering clean, efficient code.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <hr class="container mx-auto border-gray-200 my-10" />
+
+    <section id="experience" class="container mx-auto px-4 py-20">
+      <div class="text-center mb-12">
+        <p class="text-xl text-gray-600">Explore My</p>
+        <h2 class="text-4xl font-bold text-gray-900 mt-1">Experience</h2>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-10">
+        
+        <div class="border border-gray-300 rounded-3xl p-8 bg-white shadow-xl hover:shadow-2xl transition duration-300">
+          <h3 class="text-center text-3xl font-bold text-gray-800 mb-8">Frontend Development</h3>
+          <div class="grid grid-cols-2 gap-x-6 gap-y-8">
+            <div class="flex items-center gap-3">
+              <i class="fa-solid fa-check-circle text-2xl text-sky-600"></i>
+              <div>
+                <p class="font-semibold text-lg text-gray-900">HTML</p>
+                <p class="text-sm text-gray-600">Experienced</p>
+              </div>
+            </div>
+            <div class="flex items-center gap-3">
+              <i class="fa-solid fa-check-circle text-2xl text-sky-600"></i>
+              <div>
+                <p class="font-semibold text-lg text-gray-900">CSS</p>
+                <p class="text-sm text-gray-600">Experienced</p>
+              </div>
+            </div>
+            <div class="flex items-center gap-3">
+              <i class="fa-solid fa-check-circle text-2xl text-sky-600"></i>
+              <div>
+                <p class="font-semibold text-lg text-gray-900">Tailwind CSS</p>
+                <p class="text-sm text-gray-600">Intermediate</p>
+              </div>
+            </div>
+            <div class="flex items-center gap-3">
+              <i class="fa-solid fa-check-circle text-2xl text-sky-600"></i>
+              <div>
+                <p class="font-semibold text-lg text-gray-900">SASS</p>
+                <p class="text-sm text-gray-600">Beginner</p>
+              </div>
+            </div>
+            <div class="flex items-center gap-3">
+              <i class="fa-solid fa-check-circle text-2xl text-sky-600"></i>
+              <div>
+                <p class="font-semibold text-lg text-gray-900">JavaScript</p>
+                <p class="text-sm text-gray-600">Experienced</p>
+              </div>
+            </div>
+            <div class="flex items-center gap-3">
+              <i class="fa-solid fa-check-circle text-2xl text-sky-600"></i>
+              <div>
+                <p class="font-semibold text-lg text-gray-900">TypeScript</p>
+                <p class="text-sm text-gray-600">Beginner</p>
+              </div>
+            </div>
+            <div class="flex items-center gap-3">
+              <i class="fa-solid fa-check-circle text-2xl text-sky-600"></i>
+              <div>
+                <p class="font-semibold text-lg text-gray-900">React JS</p>
+                <p class="text-sm text-gray-600">Intermediate</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="border border-gray-300 rounded-3xl p-8 bg-white shadow-xl hover:shadow-2xl transition duration-300">
+          <h3 class="text-center text-3xl font-bold text-gray-800 mb-8">Backend Development</h3>
+          <div class="grid grid-cols-2 gap-x-6 gap-y-8">
+            <div class="flex items-center gap-3">
+              <i class="fa-solid fa-check-circle text-2xl text-sky-600"></i>
+              <div>
+                <p class="font-semibold text-lg text-gray-900">Node Js</p>
+                <p class="text-sm text-gray-600">Experienced</p>
+              </div>
+            </div>
+            <div class="flex items-center gap-3">
+              <i class="fa-solid fa-check-circle text-2xl text-sky-600"></i>
+              <div>
+                <p class="font-semibold text-lg text-gray-900">Express Js</p>
+                <p class="text-sm text-gray-600">Experienced</p>
+              </div>
+            </div>
+            <div class="flex items-center gap-3">
+              <i class="fa-solid fa-check-circle text-2xl text-sky-600"></i>
+              <div>
+                <p class="font-semibold text-lg text-gray-900">MongoDB</p>
+                <p class="text-sm text-gray-600">Experienced</p>
+              </div>
+            </div>
+            <div class="flex items-center gap-3">
+              <i class="fa-solid fa-check-circle text-2xl text-sky-600"></i>
+              <div>
+                <p class="font-semibold text-lg text-gray-900">Git</p>
+                <p class="text-sm text-gray-600">Experienced</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
     
-      <!-- Introduction Section -->
-      <div class="flex flex-col items-center text-center space-y-3 ">
-        <div>
-          <h4 class="text-gray-700 text-2xl">Hello, I'm</h4>
-          <h1 class="text-4xl font-bold">Amebley Success</h1>
-          <h1 class="text-2xl text-gray-700">Full Stack Developer</h1>
-        </div>
-    
-        <!-- Buttons -->
-        <div class="flex gap-4 mt-4 text-xl">
-          <a
-            href="./asserts/img/résumé  for Amebley success -new.pdf"
-            class="px-5 py-2 border border-gray-600 rounded-full text-black hover:bg-gray-800 hover:text-white transition"
-            >Download CV</a
-          >
-          <a
-            href="#contact"
-            class="px-5 py-2 border border-gray-600 rounded-full text-black hover:bg-gray-800 hover:text-white transition"
-            >Contact Info</a
-          >
-        </div>
-    
-        <!-- Socials -->
-        <div class="flex gap-6 mt-4 text-3xl">
-          <a href="https://github.com/webdryk" target="_blank"
-            ><i class="fa-brands fa-github"></i
-          ></a>
-          <a href="http://www.linkedin.com/in/amebley-success" target="_blank"
-            ><i class="fa-brands fa-linkedin"></i
-          ></a>
-        </div>
-      </div>
-    </div>
-    
+    <hr class="container mx-auto border-gray-200 my-10" />
 
-    <!-- about -->
-<!-- About Header -->
-<div id="about" class="w-full text-center  pb-10 px-4 mt-10 ">
-  <h3 class="text-gray-700 text-2xl">Get To Know More</h3>
-  <h1 class="text-4xl font-bold">About Me</h1>
-</div>
-
-<!-- About Section: Full Width and Responsive -->
-<div class="w-full  flex  items-center px-4  lg:px-20 ">
-  <div class="flex flex-col lg:flex-row items-center lg:items-start gap-10">
-    <!-- Profile Image -->
-    <div class="flex justify-center w-full lg:w-1/2 lg:justify-end ">
-      <img 
-        src="./asserts/img/profile1.JPG"
-        alt="profile picture"
-        class="w-72 h-72 md:w-80 md:h-80 lg:w-96 lg:h-96 object-cover rounded-3xl shadow-lg"
-      />
-    </div>
-
-    <!-- Bio Section -->
-    <div class="w-full lg:w-2/2 flex flex-col items-center lg:items-start gap-6 text-center lg:text-left ">
-      <!-- Experience & Education Cards -->
-      <div class="flex flex-col sm:flex-row justify-center lg:justify-start gap-6 w-full">
-        <!-- Experience Card -->
-        <div class="flex-1 border rounded-lg px-6 py-4 text-center shadow-md bg-white">
-          <span class="text-2xl text-black-500"><i class="fa-solid fa-award"></i></span>
-          <h3 class="text-2xl font-semibold mt-2">Experience</h3>
-          <h4 class="text-gray-700 text-xl">2+ years</h4>
-          <h4 class="text-gray-700 text-xl">Full Stack Development</h4>
-        </div>
-
-        <!-- Education Card -->
-        <div class="flex-1 border rounded-lg px-6 py-4 text-center shadow-md bg-white">
-          <span class="text-2xl text-black-500"><i class="fa-solid fa-users"></i></span>
-          <h3 class="text-2xl font-semibold mt-2">Education</h3>
-          <h4 class="text-gray-700 text-xl">B.Sc. Computer Science</h4>
-          <h4 class="text-gray-700 text-xl">HND. Computer Science</h4>
-        </div>
+    <section id="project" class="container mx-auto px-4 py-20">
+      <div class="text-center mb-12">
+        <p class="text-xl text-gray-600">Browse My Recent</p>
+        <h2 class="text-4xl font-bold text-gray-900 mt-1">Projects</h2>
       </div>
 
-      <!-- Bio Paragraph -->
-      <div class="w-full max-w text-left ">
-        <p class="text-gray-700 leading-relaxed text-2xl ">
-          I am a passionate and versatile full-stack developer with a strong
-          background in backend development and a focus on building secure,
-          user-centered web applications. My skills span Node.js, Express,
-          MongoDB, React.js, and EJS, with practical experience in authentication
-          systems, admin dashboards, and responsive UI/UX design.
-        </p>
-      </div>
-    </div>
-  </div>
-</div>
+      <div class="flex flex-wrap justify-center gap-8">
+        
+        <div class="border border-gray-300 p-6 text-center rounded-2xl shadow-lg bg-white max-w-sm hover:shadow-xl transition duration-300">
+          <img
+            src="./asserts/img/urlShortner.png"
+            alt="URL Shortner project preview"
+            class="w-full h-56 object-cover rounded-xl mb-5 border border-gray-100"
+          />
+          <h3 class="text-2xl font-semibold text-gray-900 mb-4">URL Shortner</h3>
+          <div class="flex justify-center gap-4 text-lg">
+            <a
+              href="https://github.com/webdryk/urlshortner"
+              class="px-5 py-2 border-2 border-gray-800 text-gray-800 rounded-full font-medium hover:bg-gray-800 hover:text-white transition duration-300"
+              target="_blank"
+            >
+              Github
+            </a>
+            <a
+              href="https://urlshortner-git-main-webdryks-projects.vercel.app"
+              class="px-5 py-2 bg-sky-600 border-2 border-sky-600 text-white rounded-full font-medium hover:bg-sky-700 hover:border-sky-700 transition duration-300"
+              target="_blank"
+            >
+              Live Demo
+            </a>
+          </div>
+        </div>
 
-<!-- Experience Header -->
-<div class="text-center mt-32" id="experience">
-  <h3 class="text-gray-700 font-light text-2xl">Explore My</h3>
-  <h1 class="text-4xl font-bold">Experience</h1>
-</div>
+        <div class="border border-gray-300 p-6 text-center rounded-2xl shadow-lg bg-white max-w-sm hover:shadow-xl transition duration-300">
+          <img
+            src="./asserts/img/TMS.png"
+            alt="Thesis Management System project preview"
+            class="w-full h-56 object-cover rounded-xl mb-5 border border-gray-100"
+          />
+          <h3 class="text-2xl font-semibold text-gray-900 mb-4">Thesis Management System</h3>
+          <div class="flex justify-center gap-4 text-lg">
+            <a
+              href="https://github.com/webdryk/Thesis-Management-System"
+              class="px-5 py-2 border-2 border-gray-800 text-gray-800 rounded-full font-medium hover:bg-gray-800 hover:text-white transition duration-300"
+              target="_blank"
+            >
+              Github
+            </a>
+            <a
+              href="https://thesis-management-system-git-main-webdryks-projects.vercel.app"
+              class="px-5 py-2 bg-sky-600 border-2 border-sky-600 text-white rounded-full font-medium hover:bg-sky-700 hover:border-sky-700 transition duration-300"
+              target="_blank"
+            >
+              Live Demo
+            </a>
+          </div>
+        </div>
 
-<!-- Experience Main -->
-<div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mt-10 px-4 md:px-16">
-  <!-- Frontend Card -->
-  <div class="border border-gray-600 rounded-lg p-6">
-    <h1 class="text-center text-gray-700 text-2xl font-semibold mb-6 ">Frontend Development</h1>
-    <div class="grid grid-cols-2  gap-6">
-      <!-- Skill Item -->
-      <div class="flex items-start gap-3 ">
-        <i class="fa-solid fa-circle-check text-2xl text-black-500 mt-1"></i>
-        <div>
-          <span class="font-semibold block text-2xl">HTML</span>
-          <span class="text-sm text-gray-700 text-xl">Experienced</span>
+        <div class="border border-gray-300 p-6 text-center rounded-2xl shadow-lg bg-white max-w-sm hover:shadow-xl transition duration-300">
+          <img
+            src="./asserts/img/currency_converter.png"
+            alt="Currency Converter project preview"
+            class="w-full h-56 object-cover rounded-xl mb-5 border border-gray-100"
+          />
+          <h3 class="text-2xl font-semibold text-gray-900 mb-4">Currency Converter</h3>
+          <div class="flex justify-center gap-4 text-lg">
+            <a
+              href="http://"
+              class="px-5 py-2 border-2 border-gray-800 text-gray-800 rounded-full font-medium hover:bg-gray-800 hover:text-white transition duration-300"
+              target="_blank"
+            >
+              Github
+            </a>
+            <a
+              href="https://currency-convertor-git-main-webdryks-projects.vercel.app"
+              class="px-5 py-2 bg-sky-600 border-2 border-sky-600 text-white rounded-full font-medium hover:bg-sky-700 hover:border-sky-700 transition duration-300"
+              target="_blank"
+            >
+              Live Demo
+            </a>
+          </div>
         </div>
       </div>
-      <div class="flex items-start gap-3">
-        <i class="fa-solid fa-circle-check text-2xl text-black-500 mt-1"></i>
-        <div>
-          <span class="font-semibold block text-2xl">CSS</span>
-          <span class="text-sm text-gray-700 text-xl">Experienced</span>
+    </section>
+
+    <hr class="container mx-auto border-gray-200 my-10" />
+
+    <section id="contact" class="container mx-auto px-4 py-20 flex flex-col items-center">
+      <div class="text-center mb-10">
+        <p class="text-xl text-gray-600">Get in Touch</p>
+        <h2 class="text-4xl font-bold text-gray-900 mt-1">Contact Me</h2>
+      </div>
+
+      <div class="flex flex-col sm:flex-row items-center justify-center gap-6 sm:gap-12 border-2 border-gray-300 rounded-full p-4 sm:p-5 w-full max-w-2xl shadow-lg bg-white">
+        <div class="flex items-center gap-3">
+          <i class="fa-solid fa-envelope text-2xl text-sky-600"></i>
+          <p class="text-lg text-gray-700">
+            <a href="mailto:saamebley@gmail.com" class="hover:text-sky-600 transition">saamebley@gmail.com</a>
+          </p>
+        </div>
+        <div class="flex items-center gap-3">
+          <i class="fa-brands fa-linkedin text-2xl text-sky-600"></i>
+          <p class="text-lg text-gray-700">
+            <a href="http://www.linkedin.com/in/amebley-success" class="hover:text-sky-600 transition" target="_blank">LinkedIn Profile</a>
+          </p>
         </div>
       </div>
-      <div class="flex items-start gap-3">
-        <i class="fa-solid fa-circle-check text-2xl text-black-500 mt-1"></i>
-        <div>
-          <span class="font-semibold block text-2xl">tailwind CSS</span>
-          <span class="text-sm text-gray-700 text-xl">intermediate</span>
-        </div>
+    </section>
+
+    <footer class="bg-white border-t border-gray-200 mt-10">
+      <nav class="container mx-auto px-4 py-8">
+        <ul class="flex flex-col md:flex-row items-center justify-center gap-4 md:gap-10 font-medium">
+          <li>
+            <a href="#about" class="text-lg text-gray-700 hover:text-sky-600 transition duration-200">About</a>
+          </li>
+          <li>
+            <a href="#experience" class="text-lg text-gray-700 hover:text-sky-600 transition duration-200">Experience</a>
+          </li>
+          <li>
+            <a href="#project" class="text-lg text-gray-700 hover:text-sky-600 transition duration-200">Projects</a>
+          </li>
+          <li>
+            <a href="#contact" class="text-lg text-gray-700 hover:text-sky-600 transition duration-200">Contact</a>
+          </li>
+        </ul>
+      </nav>
+
+      <div class="text-center py-4 border-t border-gray-100 text-gray-500 text-sm">
+        <p>Copyright &copy; 2025 Webdryk. All Rights Reserved.</p>
       </div>
-      <div class="flex items-start gap-3">
-        <i class="fa-solid fa-circle-check text-2xl text-black-500 mt-1"></i>
-        <div>
-          <span class="font-semibold block text-2xl">SASS</span>
-          <span class="text-sm text-gray-700 text-xl">Beginner</span>
-        </div>
-      </div>
-      <div class="flex items-start gap-3">
-        <i class="fa-solid fa-circle-check text-2xl text-black-500 mt-1"></i>
-        <div>
-          <span class="font-semibold block text-2xl">JavaScript</span>
-          <span class="text-sm text-gray-700 text-xl">Experienced</span>
-        </div>
-      </div>
-      <div class="flex items-start gap-3">
-        <i class="fa-solid fa-circle-check text-2xl text-black-500 mt-1"></i>
-        <div>
-          <span class="font-semibold block text-2xl">TypeScript</span>
-          <span class="text-sm text-gray-700 text-xl">Beginner</span>
-        </div>
-      </div>
-      <div class="flex items-start gap-3">
-        <i class="fa-solid fa-circle-check text-2xl text-black-500 mt-1"></i>
-        <div>
-          <span class="font-semibold block text-2xl">React JS</span>
-          <span class="text-sm text-gray-700 text-xl">intermediate</span>
-        </div>
-      </div>
-    </div>
-  </div>
+    </footer>
 
-  <!-- Backend Card -->
-  <div class="border border-gray-600 rounded-lg p-6">
-    <h1 class="text-center text-gray-700 text-xl font-semibold mb-6">Backend Development</h1>
-    <div class="grid grid-cols-2  gap-6">
-      <div class="flex items-start gap-3">
-        <i class="fa-solid fa-circle-check text-2xl text-black-500 mt-1"></i>
-        <div>
-          <span class="font-semibold block text-2xl">Node Js</span>
-          <span class="text-sm text-gray-700 text-xl">Experienced</span>
-        </div>
-      </div>
-      <div class="flex items-start gap-3">
-        <i class="fa-solid fa-circle-check text-2xl text-black-500 mt-1"></i>
-        <div>
-          <span class="font-semibold block text-2xl">Express Js</span>
-          <span class="text-sm text-gray-700 text-xl">Experienced</span>
-        </div>
-      </div>
-      <div class="flex items-start gap-3">
-        <i class="fa-solid fa-circle-check text-2xl text-black-500 mt-1"></i>
-        <div>
-          <span class="font-semibold block text-2xl">MongoDB</span>
-          <span class="text-sm text-gray-700 text-xl">Experienced</span>
-        </div>
-      </div>
-      <div class="flex items-start gap-3">
-        <i class="fa-solid fa-circle-check text-2xl text-black-500 mt-1"></i>
-        <div>
-          <span class="font-semibold block text-2xl">Git</span>
-          <span class="text-sm text-gray-700 text-xl">Experienced</span>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-
-    <!-- projects -->
-<!-- Project Header -->
-<div class="text-center mt-[20%]" id="project">
-  <h3 class="text-gray-700 text-2xl">Browse My Recent</h3>
-  <h1 class="text-4xl font-bold">Projects</h1>
-</div>
-
-<!-- Project Container -->
-<div class="flex flex-wrap justify-center gap-10 mt-10 px-4">
-  <!-- Project 1 -->
-  <div class="border border-gray-600 p-12 text-center rounded-lg">
-    <img
-      src="./asserts/img/urlShortner.png"
-      alt="URL Shortner"
-      class="w-[350px] h-[300px] object-fill rounded-lg"
-    />
-    <h3 class="text-2xl font-semibold mt-4">URL Shortner</h3>
-    <div class="flex justify-center gap-4 py-5 text-xl">
-      <a
-        href="https://github.com/webdryk/urlshortner"
-        class="no-underline border border-gray-600 text-black px-4 py-2 rounded-full transition-colors duration-300 hover:bg-gray-900 hover:text-white"
-      >
-        Github
-      </a>
-      <a
-        href="https://urlshortner-git-main-webdryks-projects.vercel.app"
-        class="no-underline border border-gray-600 text-black px-4 py-2 rounded-full transition-colors duration-300 hover:bg-gray-900 hover:text-white"
-      >
-        Live Demo
-      </a>
-    </div>
-  </div>
-
-  <!-- Project 2 -->
-  <div class="border border-gray-600 p-12 text-center rounded-lg">
-    <img
-      src="./asserts/img/TMS.png"
-      alt="Project Two"
-      class="w-[350px] h-[300px] object-cover rounded-lg"
-    />
-    <h3 class="text-2xl font-semibold mt-4">Thesis Management System</h3>
-    <div class="flex justify-center gap-4 py-5 text-xl">
-      <a
-        href="https://github.com/webdryk/Thesis-Management-System"
-        class="no-underline border border-gray-600 text-black px-4 py-2 rounded-full transition-colors duration-300 hover:bg-gray-900 hover:text-white"
-      >
-        Github
-      </a>
-      <a
-        href="https://thesis-management-system-git-main-webdryks-projects.vercel.app"
-        class="no-underline border border-gray-600 text-black px-4 py-2 rounded-full transition-colors duration-300 hover:bg-gray-900 hover:text-white"
-      >
-        Live Demo
-      </a>
-    </div>
-  </div>
-
-  <!-- Project 3 -->
-  <div class="border border-gray-600 p-12 text-center rounded-lg">
-    <img
-      src="./asserts/img/currency_converter.png"
-      alt="Project Three"
-      class="w-[350px] h-[300px] object-cover rounded-lg"
-    />
-    <h3 class="text-2xl font-semibold mt-4">Currency Convert</h3>
-    <div class="flex justify-center gap-4 py-5 text-xl">
-      <a
-        href="http://"
-        class="no-underline border border-gray-600 text-black px-4 py-2 rounded-full transition-colors duration-300 hover:bg-gray-900 hover:text-white"
-      >
-        Github
-      </a>
-      <a
-        href="https://currency-convertor-git-main-webdryks-projects.vercel.app"
-        class="no-underline border border-gray-600 text-black px-4 py-2 rounded-full transition-colors duration-300 hover:bg-gray-900 hover:text-white"
-      >
-        Live Demo
-      </a>
-    </div>
-  </div>
-</div>
-
-     
-
-
-<section id="contact" class="flex flex-col items-center justify-center h-[50vh] px-6 py-12 md:py-20 bg-white">
-  <p class="text-gray-700 text-2xl mb-2">Get in Touch</p>
-  <h1 class="text-4xl font-bold text-black-600 mb-8">Contact Me</h1>
-
-  <div class="flex flex-col sm:flex-row items-center justify-center gap-6 sm:gap-12  border border-gray-300 rounded-full p-4 w-full max-w-2xl shadow">
-    <!-- Email -->
-    <div class="flex items-center gap-3">
-      <i class="fa-solid fa-square-envelope text-2xl text-black-700"></i>      <p class="text-xl text-black-800">
-        <a href="mailto:saamebley@gmail.com" class="hover:text-gray-600 hover:border-b-3 transition">saamebley@gmail.com</a>
-      </p>
-    </div>
-    <!-- LinkedIn -->
-    <div class="flex items-center gap-3">
-        <i class="fa-brands fa-linkedin text-2xl text-black-700"></i>
-      <p class="text-xl text-black-700">
-        <a href="www.linkedin.com/in/amebley-success" class="hover:text-gray-600 hover:border-b-3 transition" target="_blank">LinkedIn</a>
-      </p>
-    </div>
-  </div>
-</section>
-
-
- 
- 
-<ul class="flex flex-col md:flex-row items-center justify-center  gap-8 sm:gap-5">
-  <li class="list-none p-2 text-2xl sm:text-2xl">
-    <a href="#about" class="text-black hover:text-gray-600 hover:border-b-3 transition">About</a>
-  </li>
-  <li class="list-none p-2 text-2xl sm:text-2xl">
-    <a href="#experience" class="text-black hover:text-gray-600 hover:border-b-3 transition">Experience</a>
-  </li>
-  <li class="list-none p-2 text-2xl sm:text-2xl">
-    <a href="#project" class="text-black hover:text-gray-600 hover:border-b-3 transition">Projects</a>
-  </li>
-  <li class="list-none p-2 text-2xl sm:text-2xl">
-    <a href="#contact" class="text-black hover:text-gray-600 hover:border-b-3 transition">Contact</a>
-  </li>
-</ul>
-
-<div class="flex justify-center mt-12 pb-3">
-  <p>Copyright © 2025 Webdryk. All Rights Reserved.</p>
-</div>
-
-  <script>
-     function toggleMenu() {
-    const menu = document.getElementById("mobileMenu");
-    menu.classList.toggle("hidden");
-  }
-  </script>
+    <script>
+       function toggleMenu() {
+        const menu = document.getElementById("mobileMenu");
+        menu.classList.toggle("hidden");
+      }
+    </script>
   </body>
 </html>
